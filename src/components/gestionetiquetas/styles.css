@@ -1,0 +1,63 @@
+.button-group{
+  margin-left: 19vw;
+}
+
+.button-group button {
+    background-color: #fff;
+    color: #343434 !important;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    border: 1px solid #000;
+  }
+  
+  .button-group button:focus {
+    background-color: #ED1c24;
+    color: #000 !important;
+  }
+  
+  .DenseTable {
+    color: #000 !important;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .Button-etiqueta{
+    background-color: #092167 !important;
+    color: #fff !important;
+    font-family: "Poppins", sans-serif !important;
+    margin-top: 10vh!important;
+    margin-left: 35vh!important;
+    
+  }
+
+  .delete-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .delete-button img {
+    width: 24px;
+    height: 24px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"] {
+    height: 5vh;
+    width: 15vw;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .col-fixed {
+    width: 50%;
+  }
+.select-etiqueta{
+  height: 5.5vh;
+  width: 16vw;
+  border: solid 1px #ccc;
+}
