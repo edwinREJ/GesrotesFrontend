@@ -1,0 +1,110 @@
+.contacto  {
+  position: relative;
+  margin-top: 20vh;
+  text-align: left;
+  border-top: 0.2vw solid #DFE0E2;
+  width: 100%;
+
+}
+
+.icono-contacto {
+  margin-top: 7%;
+  font-size: 2.2em;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 2%
+}
+
+.texto {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+}
+
+.texto .titulo {
+  color: red;
+  font-weight: normal;
+  font-size: 0.9vw;
+  line-height: 1.4vw;
+  
+}
+
+.texto .numero {
+  font-size: 0.9vw;
+  line-height: 1.4;
+  color: black;
+}
+
+.nav-link svg {
+  margin-right: 2%; /* ajusta la cantidad de espacio aquí */
+}
+
+.breadcrumbs-container {
+  height: 80%;
+  max-width: 80%;
+  margin: 2.5vw
+}
+
+.nav-grupos {
+  margin: 1vw 0;
+}
+
+.nav-grupos .nav-link {
+  display: block;
+  padding: 3.3%;
+  text-decoration: none;
+  color: black;
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+}
+
+.gestion {
+  margin-top: 30%;
+  margin-bottom: 30%;
+  text-align: left;
+  color: black;
+  font-family: "Poppins", sans-serif;
+}
+
+.perfil{
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+}
+
+.navbar-brand {
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  color: black;
+}
+
+.navbar-collapse{
+  border-top: 0.2vw solid #DFE0E2;
+  margin-top: 7%;
+}
+.navbar {
+  margin-top: 20%;
+}
+
+.navbar-nav {
+  list-style: none;
+}
+.gestion p {
+  margin-bottom: 10%;
+  font-family: "Poppins", sans-serif;
+  color: black;
+}
+
+.perfil p {
+  margin-bottom: 10%;
+  font-family: "Poppins", sans-serif;
+  color: black;
+}
+
+
+.nav-link:focus,
+.nav-link.active {
+  background-color: #dfe0e2 !important;
+  color: #960d0d !important;
+}
+

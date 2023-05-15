@@ -1,0 +1,112 @@
+.card-header {
+  display: flex;
+  align-items: center;
+  padding-left: 0.5vw;
+  margin-top: 1vh;
+}
+
+.profile-image {
+  border-radius: 50%;
+  margin-right: 0.1vw;
+  width: 5.7vw;
+  height: 12vh;
+  border: 0.1px solid #DFE0E2;
+}
+
+.card-custom {
+  border: 1.5px solid #DFE0E2;
+  width: 16vw;
+  height: 25vh;
+  background-color: white;
+  border-radius: 7px;
+}
+
+.profile-info {
+  display: flex;
+}
+
+.profile-details {
+  margin-left: 0.5rem;
+  margin-top: 3vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.card-title {
+  font-size: 0.9rem;
+}
+
+.profile-details p {
+  margin-top: 0.1vh;
+  margin-bottom: 0.1vh;
+  font-size: 0.6rem;
+  align-self: flex-start;
+}
+
+.eliminar-registro {
+  margin-top: 3vh;
+  background-color: #960D0D;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  overflow: hidden;
+  color: #FFFF;
+}
+
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 0.1fr);
+  gap: 1rem;
+}
+
+.card-container-busqueda {
+  display: grid;
+  margin-top: 1rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.filtrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.filtrar input[type="text"] {
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-top: 2vh;
+  
+}
+
+
+.registrar-estudiante{
+  margin-top: 3vh;
+  background-color: #092167;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  overflow: hidden;
+  color: #FFFF;
+}
+
+.eliminar-todo button{
+  background-color: #960D0D;
+  color: #FFFF;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.container-buscar{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}

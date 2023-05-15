@@ -1,0 +1,155 @@
+.card-custom-asignatura{
+  border: 1.5px solid #DFE0E2;
+  width: 24.7vw;
+  height:30vh;
+  background-color: white;
+  border-radius: 7px;
+  margin-top: 3vh;
+}
+
+.card-header-asignatura {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #092167;
+  margin-top: 0%;
+  padding-bottom: 2vh;
+  justify-content: center;
+}
+
+.titulo-asignatura{
+  justify-content: center;
+  font-size: 1.3vw;
+  color: #FFFF;
+  margin-top: 2vh; 
+}
+
+.sub-titulo-asignatura{
+  font-size: 1vw;
+  color: #FFFF;
+  margin-top: 1vh; 
+}
+
+.boton-asignatura {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+  margin-top: 5vh;
+  border-top: 1px solid #707070;
+}
+
+.card-body-asignatura{
+  margin-bottom: 12vh;
+}
+
+.boton-asignatura button {
+  margin-top: 3rem;
+  margin:  0.4vw; 
+  background-color: #08743b;
+  color: #FFFF;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  font-size : 9px;
+  height: 4vh;
+  width: 11vw;
+}
+
+.card-container-asignatura {
+  display: grid;
+  grid-template-columns: repeat(3, 0.1fr);
+  gap: 1rem;
+}
+
+.body-contenido-estado {
+  display: grid;
+  grid-template-columns: repeat(5, auto); 
+  gap: 3rem; 
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+  
+.header-estado{
+  background-color: #092167;
+  height: 8vh;
+  margin-bottom: 3vh;
+}
+
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.header-titulo {
+  color: #fff;
+  text-align: center;
+  flex-grow: 1;
+  margin-right: 5vw;
+}
+
+.header-boton {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.3rem;
+  margin-left: 2vw;
+}
+
+.body-subtitulo {
+  text-align: center;
+  color: #092167;
+  margin-top: 2vh;
+  margin-bottom: 3vh;
+}
+
+.body-contenido-estado{
+  text-align: center;
+}
+
+.estado-asignatura-footer-boton{
+  text-align: center;
+  margin-bottom: 5vh;
+  margin-top: 5vh;
+}
+
+.estado-asignatura-footer-boton button{
+  background-color: #092167;
+  color: #FFFF;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 8vw;
+  height: 5vh;
+}
+
+.card-estado-image-estudiantes {
+  font-size: 1rem;
+  color: white;
+  background-color: 'none';
+  justify-content: center;
+  width: 10vw;
+  height: 12vh;
+  margin-top: 2vh;
+}
+
+.card-estado-button {
+  margin-top: 6vh;
+  background-color: #08743b;
+  color: #fff;
+  border-radius: 10px;
+  width: 8vw;
+  height: 5vh;
+}
+.card-estado{
+  background-color: #092167;
+  border-radius: 10px;
+  width: 10VW;
+  height: 35vh;
+  color: #fff;
+}

@@ -1,0 +1,47 @@
+.header-titulo {
+    color: #fff;
+    text-align: center;
+    flex-grow: 1;
+    margin-right: 5vw;
+  }
+
+  .header-gestion-estudiante{
+    background-color: #092167;
+    height: 8vh;
+    margin-bottom: 3vh;
+  }
+  
+  .header-content-gestion-estudiante {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+.contenedor-gestion-estudiante{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 3vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+
+}
+
+  .nombre-gestion-estudiante {
+    border: 1px solid #000;
+    border-radius: 5px;
+    height: 6vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .nombre-gestion-estudiante label {
+    margin-top: 2vh;
+    flex-grow: 0.5; /* Esto hace que el label ocupe todo el espacio disponible */
+  }
+  
+ 
