@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Estudiantes from '../estudiantes/Estudiante'
 import Turno from '../turno/turno';
+import { useParams } from 'react-router-dom';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -13,7 +14,7 @@ function TabPanel(props) {
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
+      ide={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
@@ -28,7 +29,7 @@ function TabPanel(props) {
 
 function a11yProps(index) {
   return {
-    id: `simple-tab-${index}`,
+    ide: `simple-tab-${index}`,
     'Poppins", sans-serif': `simple-tabpanel-${index}`,
   };
 }
@@ -39,6 +40,7 @@ export default function TabAsignatura() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const { asignatura_id } = useParams();
 
   const tabStyles = {
     root: {
@@ -81,7 +83,7 @@ export default function TabAsignatura() {
       </Box>
       
       <TabPanel value={value} index={0}>
-        <Estudiantes/>
+        <Estudiantes asignatura_id= {asignatura_id}/>
       </TabPanel>
 
       <TabPanel value={value} index={1}>

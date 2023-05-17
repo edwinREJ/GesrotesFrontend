@@ -3,9 +3,9 @@ import './styles.css';
 import {  Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import EstadoAsignatura from './EstadoAsignatura';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
-function CardAsignatura({id,titulo,subtitulo}){
+function CardAsignatura({asignatura_id,titulo,subtitulo}){
 
    
 
@@ -37,7 +37,12 @@ function CardAsignatura({id,titulo,subtitulo}){
                   EstadoAsignatura show={modalShow}
                   onHide={() => setModalShow(false)}
                />
-                  <Link to="/TabAsignatura"><Button >GESTIONAR ASIGNATURA</Button></Link>
+                  
+               
+               <Link to={`/TabAsignatura/${asignatura_id}`} >
+                  <Button>GESTIONAR ASIGNATURA</Button>
+               </Link>
+    
              </div>
             </Card.Footer>
         </Card>

@@ -1,43 +1,41 @@
-import React from 'react';
 import CardEstudiante from './CardEstudiante';
-import useEstudiantes from './LER';
+import React, { useEffect, useState } from 'react';
 
+const EstudiantesRegistrados = (props) => {
+  const [estudiantesId, setIdEstudiantes] = useState([]);
+  const asignatura_id = props.asignatura_id;
 
-const EstudiantesRegistrados = () => {
-    
-    const generarImagen = () => {
-      const id = Math.floor(Math.random() * 1000); // generamos un id aleatorio
-      return `https://robohash.org/${id}.png?size=200x200`;
+  useEffect(() => {
+    const getPersonajes = async () => {
+      try {
+        const response = await fetch(`http://localhost:2008/ListarEstudiantes/${asignatura_id}`,{
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        const data = await response.json();
+        setIdEstudiantes(data);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
     };
   
-    const { estudiantes, setEstudiantes } = useEstudiantes();
-
-    return (
-      <div className="card-container">
-        {estudiantes.map((estudiante) => (
-          <CardEstudiante
-            key={estudiante.nombre}
-            ima={generarImagen()}
-            nombre={estudiante.nombre}
-            p1={estudiante.p1}
-            p2={estudiante.p2}
-            isEliminar={true}
-          />
-        ))}
-      </div>
-    );
-  };
+    getPersonajes();
+  }, [asignatura_id]);
   
-  export default EstudiantesRegistrados;
 
-  // const estudiantes = [
-  //   { nombre: "Edwin Espinosa", p1: "1", p2: "2" },
-  //   { nombre: "Juan Perez", p1: "3", p2: "4" },
-  //   { nombre: "Maria Garcia", p1: "5", p2: "6" },
-  //   { nombre: "Edwin Espinosa", p1: "1", p2: "2" },
-  //   { nombre: "Juan Perez", p1: "3", p2: "4" },
-  //   { nombre: "Maria Garcia", p1: "5", p2: "6" },
-  //   { nombre: "Edwin Espinosa", p1: "1", p2: "2" },
-  //   { nombre: "Juan Perez", p1: "3", p2: "4" },
-  //   { nombre: "Maria Garcia", p1: "5", p2: "6" },
-  // ];
+  return (
+    <div className="card-container">
+    
+    </div>
+  );
+};
+
+export default EstudiantesRegistrados;
+
+
+
+
+ 

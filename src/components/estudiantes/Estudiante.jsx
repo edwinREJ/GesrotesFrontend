@@ -1,17 +1,17 @@
 import { Box } from '@mui/material'
 import EstudiantesRegistrados from './EstudiantesRegistrados';
 import './styles.css'
-import BuscarEstudiante from './BuscarEstudiante'
+import BuscarEstudianteGlobales from './BuscarEstudianteGlobales'
 import EliminarTodo from './EliminarTodo'
 
-function Estudiantes(){
-
+function Estudiantes(props){
+    const asignatura_id = props.asignatura_id;
     return(
         <Box sx={{ display: 'grid', gridTemplateColumns: '20vw 1fr' }}>
 
             <Box sx={{ width:'18vw',  paddingRight: theme => theme.spacing(1),overflow: 'auto',height: '68vh'}}>     
                     BuscarEstudiante
-                    <BuscarEstudiante/>
+                    <BuscarEstudianteGlobales asignatura_id={asignatura_id}/>
             </Box>
 
             <Box sx={{overflow: 'auto',borderLeft: '2px solid #DFE0E2',height: '68vh', paddingLeft: theme => theme.spacing(2)
@@ -28,7 +28,7 @@ function Estudiantes(){
                     </Box>
                     
                     <Box >
-                        <EstudiantesRegistrados/>
+                        <EstudiantesRegistrados asignatura_id={asignatura_id}/>
                     </Box>  
                 </Box>   
 

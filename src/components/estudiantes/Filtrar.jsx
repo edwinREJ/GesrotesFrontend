@@ -1,5 +1,6 @@
 import React from 'react'
 import './styles.css'
+
 export const Filtrar = ({ filter, setFilter }) => {
 	const handleInput = ({ target }) => {
 		setFilter(target.value)

@@ -110,3 +110,9 @@
   align-items: center;
   justify-content: center;
 }
+
+link:focus,
+link.active {
+  background-color: #dfe0e2 !important;
+  color: #960d0d !important;
+}
