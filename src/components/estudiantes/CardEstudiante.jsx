@@ -4,6 +4,9 @@ import EliminarRegistro from './EliminarRegistro'
 
 function CardEstudiante({foto, nombre, estudiante_id, usuario,isEliminar,asignatura_id }) {
 
+
+  /* Este metodo nos permite consumir un microservicio el cual permite
+  registrar un estudiante en la asignatura que previamente selecciono. */
   const handleRegistrarClick = () => {
     // Construir el objeto de datos a enviar
     const datos = {
@@ -30,6 +33,9 @@ function CardEstudiante({foto, nombre, estudiante_id, usuario,isEliminar,asignat
       });
   };
 
+  /* En esta parte como tal se establece la estuctura de la card con sus respectivos estilos,
+      cabe recalcar que en esta parte se juega con una condiccion y dependiendo de donde es llamada
+      esta funcion se imprime el boton adecuado, ya sea eliminar o registrar.*/
 
   return (
     <Card className="card-custom">

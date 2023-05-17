@@ -5,6 +5,9 @@ import Button from 'react-bootstrap/Button';
 import EstadoAsignatura from './EstadoAsignatura';
 import React, {useState} from 'react';
 
+/* Esta funcion permite realizar la estructura de card asignatura, la cual se le establece 
+   sus respectivos estilos. */
+
 function CardAsignatura({asignatura_id,titulo,subtitulo}){
 
    
