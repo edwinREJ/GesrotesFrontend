@@ -1,24 +1,33 @@
+import { useDispatch } from 'react-redux';
+import { cambiarEstado } from '../hooks/store';
 import { Button } from 'react-bootstrap';
-import './styles.css'
-import useEstudiantes from './LER';
 
-function EliminarRegistro(nombre){
-
-    const { estudiantes, setEstudiantes } = useEstudiantes();
-    
-    const eliminarEstudiante = (nombre) => {
-        // Usa el método `filter` para crear una nueva lista que excluya al estudiante
-        // cuyo nombre coincide con el valor pasado como argumento.
-        
-        const nuevaLista = estudiantes.filter(estudiante => estudiante.nombre !== nombre);
-      
-        // Actualiza el estado de `estudiantes` con la nueva lista usando `setEstudiantes`.
-        setEstudiantes(nuevaLista);
+  function EliminarRegistro(props) {
+    const dispatch = useDispatch();
+  
+    const eliminar = () => {
+      const datos = {
+        asignatura_id: props.asignatura_id,
+        estudiante_id: props.estudiante_id
       };
-    return(
-        <Button className='eliminar-registro'onClick={() => eliminarEstudiante(nombre)}>Eliminar Registro</Button>
-        
+    fetch('http://localhost:2008/EliminarEstudiante', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+      })
+        .catch(error => {
+          console.log(error);
+        });
+      dispatch(cambiarEstado());
+    };
+  
+    return (
+      <div >
+        <Button className='eliminar-registro'  onClick={eliminar}>Eliminar Registro</Button>
+      </div>
     );
-
-
-}export default EliminarRegistro;
+  }
+  
+  export default EliminarRegistro;

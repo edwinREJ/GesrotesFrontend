@@ -6,6 +6,7 @@ import EliminarTodo from './EliminarTodo'
 
 function Estudiantes(props){
     const asignatura_id = props.asignatura_id;
+    
     return(
         <Box sx={{ display: 'grid', gridTemplateColumns: '20vw 1fr' }}>
 
@@ -23,7 +24,7 @@ function Estudiantes(props){
                             Estudiantes Registrados
                         </p>
                         <div style={{marginRight:'3.5vw'}}>
-                            <EliminarTodo/>
+                            <EliminarTodo asignatura_id={asignatura_id}/>
                         </div>
                     </Box>
                     

@@ -1,37 +1,10 @@
-import { Card, Button } from 'react-bootstrap';
+import { Card} from 'react-bootstrap';
 import './styles.css'
 import EliminarRegistro from './EliminarRegistro'
+import RegistrarEstudiante from './RegistrarEstudiante';
 
 function CardEstudiante({foto, nombre, estudiante_id, usuario,isEliminar,asignatura_id }) {
 
-
-  /* Este metodo nos permite consumir un microservicio el cual permite
-  registrar un estudiante en la asignatura que previamente selecciono. */
-  const handleRegistrarClick = () => {
-    // Construir el objeto de datos a enviar
-    const datos = {
-      asignatura_id: asignatura_id,
-      estudiante_id: estudiante_id
-    };
-    // Realizar la solicitud POST utilizando fetch
-    fetch('http://localhost:2008/RegistrarEstudiante', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(datos)
-      
-    })
-      .then(response => response.json())
-      .then(data => {
-        // Manejar la respuesta del backend
-        console.log(data);
-      })
-      .catch(error => {
-        // Manejar errores
-        console.error('Error:', error);
-      });
-  };
 
   /* En esta parte como tal se establece la estuctura de la card con sus respectivos estilos,
       cabe recalcar que en esta parte se juega con una condiccion y dependiendo de donde es llamada
@@ -56,10 +29,9 @@ function CardEstudiante({foto, nombre, estudiante_id, usuario,isEliminar,asignat
         
         <Card.Body >
           {isEliminar ? (
-            <EliminarRegistro nombre={nombre}/>
+            <EliminarRegistro asignatura_id={asignatura_id} estudiante_id={estudiante_id}/>
           ) : (
-            <Button variant="primary" className='registrar-estudiante' 
-            onClick={handleRegistrarClick}>Registrar</Button>
+            <RegistrarEstudiante asignatura_id={asignatura_id} estudiante_id={estudiante_id}/>
           )}
         </Card.Body>
 

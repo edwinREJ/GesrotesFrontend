@@ -23,7 +23,7 @@ inscritos a la asignatura la cual fue selecionada. */
         console.log(error);
       }
     };
-  
+   
     getEstudiantes();
   }, []);
 
@@ -50,6 +50,7 @@ inscritos a la asignatura la cual fue selecionada. */
         ) : filter === '' ? null : estudiantesFiltrados.length > 0 ? (
           estudiantesFiltrados.map((estudiante) => (
             <CardEstudiante
+              key={estudiante.estudiante_id}
               estudiante_id={estudiante.estudiante_id}
               nombre={estudiante.nombre}
               usuario={estudiante.usuario}
