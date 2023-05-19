@@ -23,11 +23,18 @@ import './styles.css'
           },
           body: JSON.stringify(datos)
         })
-          .catch(error => {
-            console.log(error);
-          });
-        dispatch(cambiarEstado());
-      };
+        .then(response => {
+          if (response.ok) {
+            console.log('Estudiante registrado exitosamente');
+            dispatch(cambiarEstado());
+          } else {
+            console.error('Error al registrar estudiante');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    };
   
     return (
       <div >

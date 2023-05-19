@@ -13,18 +13,25 @@ function EliminarTodo({ asignatura_id }) {
         'Content-Type': 'application/json'
       }
     })
+      .then(response => {
+        if (response.ok) {
+          console.log('Estudiantes eliminados exitosamente');
+          dispatch(cambiarEstado());
+        } else {
+          console.error('Error al eliminar estudiantes');
+        }
+      })
       .catch(error => {
-        // Manejar errores
         console.error('Error:', error);
       });
-      dispatch(cambiarEstado());
   };
 
   return (
     <div className='eliminar-todo'>
-      <Button  onClick={eliminar}>Eliminar Todo</Button>
+      <Button onClick={eliminar}>Eliminar Todo</Button>
     </div>
   );
 }
 
 export default EliminarTodo;
+

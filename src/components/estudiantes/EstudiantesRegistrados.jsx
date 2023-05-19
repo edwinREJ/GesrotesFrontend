@@ -1,7 +1,6 @@
 import CardEstudiante from './CardEstudiante';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { connect } from 'react-redux';
+import { useSelector, connect } from 'react-redux';
 
 const EstudiantesRegistrados = (props) => {
   //En esta parte me encargo de guardar los id de los estudiantes para luego consumir otro servicio 
@@ -10,9 +9,7 @@ const EstudiantesRegistrados = (props) => {
   const [estudiantes, setEstudiantes] = useState([]);
   const asignatura_id = props.asignatura_id;
   const estado = useSelector(state => state.estado); // Obtener el estado desde Redux
-
   
-
   useEffect(() => {
     const obtenerEstudiantesId = async () => {
       try {

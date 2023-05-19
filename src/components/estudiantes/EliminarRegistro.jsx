@@ -17,11 +17,18 @@ import { Button } from 'react-bootstrap';
         },
         body: JSON.stringify(datos)
       })
-        .catch(error => {
-          console.log(error);
-        });
-      dispatch(cambiarEstado());
-    };
+      .then(response => {
+        if (response.ok) {
+          console.log('Estudiante eliminado exitosamente');
+          dispatch(cambiarEstado());
+        } else {
+          console.error('Error al eliminar estudiante');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
   
     return (
       <div >
