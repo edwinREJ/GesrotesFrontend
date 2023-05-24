@@ -20,13 +20,13 @@ function NavbarB() {
           <div className="gestion">
             <p>GESTIÓN</p>
             <Nav className="nav-grupos">
-              <Nav.Link as={NavLink} exact to="/BotonGestionEstudiante" activeClassName="active">
+              <Nav.Link as={NavLink} exact to="/BotonGestionEstudiante" activeclassname="active">
                 <BsCardChecklist />Verificar Estudiantes
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/CrearEtiqueta" activeClassName="active">
+              <Nav.Link as={NavLink} to="/CrearEtiqueta" activeclassname="active">
                 <BsPersonCheckFill />Verificar Docentes
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/ListaDeAsignaturas" activeClassName="active">
+              <Nav.Link as={NavLink} to="/ListaDeAsignaturas" activeclassname="active">
                 <VscBook />Asignaturas
               </Nav.Link>
             </Nav>
@@ -35,10 +35,10 @@ function NavbarB() {
           <div className="perfil">
             <p>MI PERFIL</p>
             <Nav className="nav-grupos">
-              <Nav.Link as={NavLink} to="/" activeClassName="active">
+              <Nav.Link as={NavLink} to="/" activeclassname="active">
                 <RiUserSettingsFill />Configuración
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/" activeClassName="active">
+              <Nav.Link as={NavLink} to="/" activeclassname="active">
                 <CiLogout />Salir
               </Nav.Link>
             </Nav>

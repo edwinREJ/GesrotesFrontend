@@ -1,22 +1,65 @@
 import { Box } from '@mui/material'
 import './styles.css';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DenseTable from './datatable'
 import Button from '@mui/material/Button';
 import axios from 'axios';
+import { useSelector} from 'react-redux';
+
 function CrearEtiquetas() {
 
     const [nombreEtiqueta, setNombreEtiqueta] = useState("");
-    const [escenarioSeleccionado, setEscenarioSeleccionado] = useState("");
+    const [escenarioSeleccionado, setEscenarioSeleccionado] = useState({ nombre: "", centrosalud_id: "" });
     const [etiquetas, setEtiquetas] = useState([]);
+    const [opcionesEscenarios,setOpcionesEscenarios] = useState([]);
+    const estado = useSelector(state => state.estado); // Obtener el estado desde Redux
+
+    /* Se consume un microservicio para obtener los 
+     escenarios que estan registrados en la base de datos.*/
+
+    useEffect(() => {
+      obtenerEscenarios();
+    }, []);
+
+    const obtenerEscenarios = async () => {
+      try {
+        const response = await fetch(`http://localhost:2102/CentroSalud`,{
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        const data = await response.json();
+        setOpcionesEscenarios(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    /* Se consume un microservicio para obtener las estiquetas que
+      previamente ya han sido creadas en la base de datos, para asi 
+      mostrar su respectiva informacion en la tabla. */
+    useEffect(() => {
+      obtenerEtiquetas();
+    }, [estado]);
+
+    const obtenerEtiquetas = async () => {
+      try {
+        const response = await fetch(`http://localhost:2006/Etiquetas`,{
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:3000'
+          }
+        });
+        const data = await response.json();
+        setEtiquetas(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     
-  
-    const opcionesEscenarios = [
-      { id: 1, nombre: "Escenario 1" },
-      { id: 2, nombre: "Escenario 2" },
-      { id: 3, nombre: "Escenario 3" },
-    ];
-  
     const crearEtiqueta = async () => {
       await crearEtiquetaBackend();
     };
@@ -24,11 +67,13 @@ function CrearEtiquetas() {
 
     const crearEtiquetaBackend = async () => {
       const nuevaEtiqueta = {
-        centrosalud_id: '1',
+        centrosalud_id: escenarioSeleccionado.centrosalud_id,
+        centrosalud_nombre: escenarioSeleccionado.centrosalud_nombre,
         nombre: nombreEtiqueta,
       };
+      console.log(nuevaEtiqueta)
       try {
-        const response = await axios.post('http://localhost:2020/', JSON.stringify(nuevaEtiqueta),{
+        const response = await axios.post('http://localhost:2006/Etiquetas', JSON.stringify(nuevaEtiqueta),{
           headers: {
             'Content-Type': 'application/json'
           }
@@ -43,11 +88,11 @@ function CrearEtiquetas() {
 
     return(
    
-      <Box sx={{ minWidth: '100vh',height: '60vh',marginTop:'4vh',marginLeft:'2vw',marginRight:'2vw'}}>
+      <Box sx={{ minWidth: '100vh',height: '70vh',marginTop:'4vh',marginLeft:'2vw',marginRight:'2vw'}}>
 
         <Box sx={{ overflow: 'hidden', display: 'grid', gridTemplateColumns: 'auto 1fr' ,borderTop: '1px solid #707070'}}>
           <Box sx={{ minWidth: '50vh', height: '30vh',marginLeft:'7vw',marginTop:'5vh',borderRight: '1px solid #707070',marginBottom:'5vh'}}>
-              <form>
+              <form className="form">
                 <label>Nombre de etiqueta</label>
                 <input
                     label="Ingrese un nombre"
@@ -60,21 +105,30 @@ function CrearEtiquetas() {
           
           
           <Box sx={{ minWidth: '50vh', height: '30vh',marginLeft:'7vw',marginTop:'5vh'}}>
-               <form className="form">
-                      <label>Seleccion de escenario</label>
-                      <select className='select-etiqueta'
-                          value={escenarioSeleccionado}
-                          onChange={(event) => setEscenarioSeleccionado(event.target.value)}
-                      >
-                          <option value="">Selecciona un escenario</option>
-                          {opcionesEscenarios.map((escenario) => (
-                              <option key={escenario.id} value={escenario.nombre}>
-                                  {escenario.nombre}
-                              </option>
-                          ))}
-                      </select>
-                  </form>
-                  <Button variant="contained" onClick={() => crearEtiqueta()} className="Button-etiqueta">Crear</Button>
+          <form className="form">
+            <label>Selección de escenario</label>
+            <select
+              className='select-etiqueta'
+              value={escenarioSeleccionado.nombre}
+              onChange={(event) => {
+                const selectedScenario = opcionesEscenarios.find((escenario) => escenario.nombre === event.target.value);
+                if (selectedScenario) {
+                  setEscenarioSeleccionado({ centrosalud_nombre: selectedScenario.nombre, centrosalud_id: selectedScenario.centrosalud_id });
+                } else {
+                  setEscenarioSeleccionado({ centrosalud_nombre: "", centrosalud_id: "" });
+                }
+              }}
+            >
+              <option value="">Selecciona el hospital</option>
+              {opcionesEscenarios.map((escenario) => (
+                <option key={escenario.id} value={escenario.nombre}>
+                  {escenario.nombre}
+                </option>
+              ))}
+            </select>
+          </form>
+
+          <Button variant="contained" onClick={() => crearEtiqueta()} className="Button-etiqueta">Crear</Button>
 
           </Box>
         </Box>

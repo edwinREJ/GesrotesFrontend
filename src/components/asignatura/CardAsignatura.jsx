@@ -1,6 +1,6 @@
 import { Card} from 'react-bootstrap';
 import './styles.css';
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import EstadoAsignatura from './EstadoAsignatura';
 import React, {useState} from 'react';

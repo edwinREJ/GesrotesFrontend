@@ -5,16 +5,16 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import DeleteButton from './buttondelete'
+import DeleteButton from './EliminarEtiqueta'
 import PropTypes from 'prop-types';
 
-function createData(etiqueta, servicio) {
-  return { etiqueta, servicio};
+function createData(nombre, servicio,centrosalud_nombre) {
+  return { nombre, servicio,centrosalud_nombre};
 }
 
 function createRows(data) {
   if (data && data.length > 0) {
-    return data.map((data) => createData(data.etiqueta, data.servicio));
+    return data.map((data) => createData(data.nombre, data.servicio, data.centrosalud_nombre));
   } else {
     return [];
   }
@@ -42,9 +42,9 @@ export default function DenseTableAsociar(props) {
               key={row.data}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="center" className='DenseTable'>{row.etiqueta}</TableCell>
+              <TableCell align="center" className='DenseTable'>{row.nombre}</TableCell>
               <TableCell align="center" className='DenseTable'>{row.servicio}</TableCell>
-              <TableCell align="center" className='DenseTable'>{'San jose'}</TableCell>
+              <TableCell align="center" className='DenseTable'>{row.centrosalud_nombre}</TableCell>
               <TableCell align="center">
                <DeleteButton   className='delete'/>
               </TableCell>

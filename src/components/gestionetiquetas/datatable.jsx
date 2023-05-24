@@ -5,23 +5,23 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import DeleteButton from './buttondelete'
+import EliminarEtiqueta from './EliminarEtiqueta'
 import PropTypes from 'prop-types';
 
-function createData(etiqueta, hospital) {
-  return { etiqueta, hospital };
+function createData(etiqueta, hospital,etiqueta_id) {
+  return { etiqueta, hospital,etiqueta_id };
 }
 
 function createRows(etiquetas) {
   if (etiquetas && etiquetas.length > 0) {
-    return etiquetas.map((etiqueta) => createData(etiqueta.nombre, etiqueta.escenario));
+    return etiquetas.map((etiqueta) => createData(etiqueta.nombre, 
+      etiqueta.centrosalud_nombre, etiqueta.etiqueta_id));
   } else {
     return [];
   }
 }
 
-
-export default function DenseTable(props ) {
+export default function DenseTable(props) {
 
   const { etiquetas } = props;
   const rows = createRows(etiquetas);
@@ -40,12 +40,12 @@ export default function DenseTable(props ) {
           {rows.map((row) => (
             <TableRow
               key={row.etiqueta}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
             >
               <TableCell align="center" className='DenseTable'>{row.etiqueta}</TableCell>
               <TableCell align="center" className='DenseTable'>{row.hospital}</TableCell>
               <TableCell align="center">
-               <DeleteButton   className='delete'/>
+               <EliminarEtiqueta   className='delete' etiqueta_id={row.etiqueta_id} />
               </TableCell>
             </TableRow>
           ))}
@@ -54,7 +54,6 @@ export default function DenseTable(props ) {
     </TableContainer>
   );
 }
-
 
 
 DenseTable.propTypes = {
