@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import './styles.css';
 import React, { useEffect, useState } from "react";
-import DenseTable from './datatable'
+import TablaEtiquetas from './TablaEtiquetas'
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { useSelector} from 'react-redux';
@@ -26,7 +26,8 @@ function CrearEtiquetas() {
         const response = await fetch(`http://localhost:2102/CentroSalud`,{
           method: 'GET',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:3000'
           }
         });
         const data = await response.json();
@@ -60,10 +61,12 @@ function CrearEtiquetas() {
     };
 
     
+  /* Se consume el microservicio para poder registrar una etiqueta en la base de datos
+     donde se envia como parametro una nueva etiqueta. */
+
     const crearEtiqueta = async () => {
       await crearEtiquetaBackend();
     };
-
 
     const crearEtiquetaBackend = async () => {
       const nuevaEtiqueta = {
@@ -75,12 +78,13 @@ function CrearEtiquetas() {
       try {
         const response = await axios.post('http://localhost:2006/Etiquetas', JSON.stringify(nuevaEtiqueta),{
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:3000'
           }
         });
         setEtiquetas([...etiquetas, response.data]);
         setNombreEtiqueta("");
-        setEscenarioSeleccionado("");
+        setEscenarioSeleccionado({ nombre: "", centrosalud_id: "" });
       } catch (error) {
         console.error(error);
       }
@@ -92,15 +96,16 @@ function CrearEtiquetas() {
 
         <Box sx={{ overflow: 'hidden', display: 'grid', gridTemplateColumns: 'auto 1fr' ,borderTop: '1px solid #707070'}}>
           <Box sx={{ minWidth: '50vh', height: '30vh',marginLeft:'7vw',marginTop:'5vh',borderRight: '1px solid #707070',marginBottom:'5vh'}}>
-              <form className="form">
-                <label>Nombre de etiqueta</label>
+            <form className="form">
+                <label htmlFor="etiquetaInput">Nombre de etiqueta</label>
                 <input
-                    label="Ingrese un nombre"
-                    type="text"
-                    value={nombreEtiqueta}
-                    onChange={(event) => setNombreEtiqueta(event.target.value)}
-                      />
-                </form>
+                  id="etiquetaInput"
+                  label="Ingrese un nombre"
+                  type="text"
+                  value={nombreEtiqueta}
+                  onChange={(event) => setNombreEtiqueta(event.target.value)}
+                />
+              </form>
           </Box>
           
           
@@ -121,7 +126,7 @@ function CrearEtiquetas() {
             >
               <option value="">Selecciona el hospital</option>
               {opcionesEscenarios.map((escenario) => (
-                <option key={escenario.id} value={escenario.nombre}>
+                <option key={escenario.nombre} value={escenario.nombre}>
                   {escenario.nombre}
                 </option>
               ))}
@@ -135,7 +140,7 @@ function CrearEtiquetas() {
 
         <Box sx={{ borderTop: '1px solid #707070' ,marginLeft:'1vw',marginRight:'1vw'}}>
              <h5 align="center">LISTA DE ETIQUETAS CREADAS</h5>
-            <DenseTable etiquetas={etiquetas} />
+            <TablaEtiquetas etiquetas={etiquetas} />
           </Box>
       </Box>
    

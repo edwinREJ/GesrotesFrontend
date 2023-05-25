@@ -1,5 +1,5 @@
 import Button from 'react-bootstrap/Button';
-import ModalEtiqueta from "../gestionetiquetas/modal";
+import ModalEtiqueta from "../gestionetiquetas/ModalEtiqueta";
 import React, { useState } from 'react';
 
 function CrearEtiqueta(){

@@ -42,10 +42,10 @@ function CardAsignatura({asignatura_id,titulo,subtitulo}){
                />
                   
                
-               <Link to={`/TabAsignatura/${asignatura_id}`} >
+               <Link to={`/ListaDeAsignaturas/TabAsignatura/${asignatura_id}`}>
                   <Button>GESTIONAR ASIGNATURA</Button>
                </Link>
-    
+
              </div>
             </Card.Footer>
         </Card>

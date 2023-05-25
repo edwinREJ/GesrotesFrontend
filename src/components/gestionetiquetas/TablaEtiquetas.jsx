@@ -21,7 +21,7 @@ function createRows(etiquetas) {
   }
 }
 
-export default function DenseTable(props) {
+export default function TablaEtiquetas(props) {
 
   const { etiquetas } = props;
   const rows = createRows(etiquetas);
@@ -39,7 +39,7 @@ export default function DenseTable(props) {
         <TableBody>
           {rows.map((row) => (
             <TableRow
-              key={row.etiqueta}
+              key={row.etiqueta_id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
             >
               <TableCell align="center" className='DenseTable'>{row.etiqueta}</TableCell>
@@ -55,12 +55,3 @@ export default function DenseTable(props) {
   );
 }
 
-
-DenseTable.propTypes = {
-  etiquetas: PropTypes.arrayOf(
-    PropTypes.shape({
-      nombre: PropTypes.string.isRequired,
-      escenario: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};

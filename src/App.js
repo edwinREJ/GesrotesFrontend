@@ -18,8 +18,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="navbar" element={<NavbarB />} />
           <Route path="CrearEtiqueta" element={<CrearEtiqueta />} />
-          <Route path="ListaDeAsignaturas" element={<ListaDeAsignaturas />} />
-          <Route path="TabAsignatura/:asignatura_id" element={<TabAsignatura />} />
+          <Route path="/ListaDeAsignaturas" element={<ListaDeAsignaturas />} />
+          <Route path="/ListaDeAsignaturas/TabAsignatura/:asignatura_id" element={<TabAsignatura />} />
           <Route path="EstadoAsignatura" element={<EstadoAsignatura />} />
           <Route path="BotonGestionEstudiante" element={<BotonGestionEstudiante />} />
         </Route>

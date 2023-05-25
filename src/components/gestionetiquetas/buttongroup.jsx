@@ -1,8 +1,8 @@
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import './styles.css';
-import AsociarEtiqueta from "./asociaretiqueta";
-import CrearEtiquetas from "./crearetiquetas";
+import AsociarEtiqueta from "./AsociarEtiqueta";
+import CrearEtiquetas from "./CrearEtiqueta";
 import React from 'react';
 
 function MyButtonGroup() {
