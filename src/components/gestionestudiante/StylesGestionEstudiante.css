@@ -44,4 +44,56 @@
     flex-grow: 0.5; /* Esto hace que el label ocupe todo el espacio disponible */
   }
   
+  .grupo-boton{
+    margin-left: 10vw;
+    width: 26vw;
+    height: 5vh;
+    
+  }
+  
+  .grupo-boton button {
+      background-color: #fff;
+      color: #343434 ;
+      font-family: "Poppins", sans-serif;
+      font-weight: bold;
+      border: 1px solid #707070 !important;
+      border-radius: 10px;
+      font-size: 11px;
+    }
+    
  
+
+    .desmarcar-todos{
+      background-color: #960D0D !important;
+      color: white !important;
+      border: 1px solid #707070 !important;
+      border-radius: 10px !important;
+      font-size: 11px !important;
+      width: 12vw !important;
+      height: 5vh !important;
+      margin-left: 2vw !important;
+    }
+
+
+    .search-container {
+      position: relative;
+      display: inline-block;
+      margin-left: 3vw;
+    }
+    
+    #search-input {
+      padding-left: 30px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      height: 30px;
+      width: 250px;
+      font-size: 14px;
+    }
+    
+    .search-icon {
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      color: #666;
+    }
+    

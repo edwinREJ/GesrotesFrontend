@@ -23,7 +23,7 @@ function NavbarB() {
                 <BsCardChecklist /> Verificar Estudiantes
               </Nav.Link>
               <Nav.Link as={NavLink} to="/CrearEtiqueta" activeclassname="active">
-                <BsPersonCheckFill />Verificar Docentes
+                <BsPersonCheckFill /> Verificar Docentes
               </Nav.Link>
               <Nav.Link as={NavLink} to="/ListaDeAsignaturas" activeClassName="active">
                   <VscBook /> Asignaturas
@@ -38,7 +38,7 @@ function NavbarB() {
                 <RiUserSettingsFill /> Configuración
               </Nav.Link>
               <Nav.Link as={NavLink} to="/" activeclassname="active">
-                <CiLogout />Salir
+                <CiLogout /> Salir
               </Nav.Link>
             </Nav>
           </div>

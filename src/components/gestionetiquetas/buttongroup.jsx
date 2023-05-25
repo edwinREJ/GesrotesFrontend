@@ -26,15 +26,17 @@ function MyButtonGroup() {
 
   return (
     <div>
-      <ButtonGroup variant="contained" color="primary" className="button-group">
+      <ButtonGroup className="button-group">
         <Button 
-          style={{ backgroundColor: activeButton === 0 ? "red" : "white" }}
+           style={{ backgroundColor: activeButton === 0 ? "#960D0D" : "white",
+          color: activeButton === 0 ? "white" : "#343434", }}
           onClick={handleMostrarCrearEtiqueta}
         >
           CREAR ETIQUETAS
         </Button>
         <Button 
-          style={{ backgroundColor: activeButton === 1 ? "red" : "white" }}
+           style={{ backgroundColor: activeButton === 1 ? "#960D0D" : "white",
+          color: activeButton === 1 ? "white" : "#343434", }}
           onClick={handleMostrarAsociarEtiqueta}
         >
           ASOCIAR ETIQUETAS

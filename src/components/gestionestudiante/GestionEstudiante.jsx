@@ -2,6 +2,9 @@ import Modal from 'react-bootstrap/Modal';
 import './StylesGestionEstudiante.css'
 import { Box } from '@mui/material'
 import useEstudiantes from '../estudiantes/LER';
+import GrupoBoton from './GrupoBoton'
+import Button from '@mui/material/Button';
+import './StylesGestionEstudiante.css';
 
 function EstadoAsignatura(props) {
 
@@ -29,9 +32,16 @@ function EstadoAsignatura(props) {
        
       <Box sx={{display: 'grid',width: '75vw'}}>
 
-        <Box sx={{height: '10vh', borderBottom: '1px solid #707070'}}>
+        <Box sx={{height: '10vh',display:'flex'}}>
+          <div class="search-container">
+            <input type="text" id="search-input" placeholder="Buscar estudiante por nombre"/>
+            <span class="search-icon">&#128269;</span>
+          </div>
 
+          <GrupoBoton/>
+          <Button className='desmarcar-todos'>DESMARCAR TODOS</Button>
         </Box>
+
 
         <Box sx={{height: '50vh',overflow: 'auto'}}>
           <div className='contenedor-gestion-estudiante'>
