@@ -21,9 +21,7 @@ function Layout() {
         
         <Box sx={{ height: '80vh', background: '#F7F7F7', m: 1, borderRadius: 3, paddingLeft: theme => theme.spacing(3),
                   paddingRight: theme => theme.spacing(3), border: '1px solid #DFE0E2' }}>
-          
-            <Outlet></Outlet>
-          
+            <Outlet></Outlet>  
         </Box>
       </Box>
       

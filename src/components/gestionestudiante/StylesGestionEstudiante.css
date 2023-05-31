@@ -29,7 +29,7 @@
 }
 
   .nombre-gestion-estudiante {
-    border: 1px solid #000;
+    border: 1px solid #707070;
     border-radius: 5px;
     height: 6vh;
     display: flex;
@@ -45,10 +45,9 @@
   }
   
   .grupo-boton{
-    margin-left: 10vw;
+    margin-left: 7vw;
     width: 26vw;
-    height: 5vh;
-    
+    height: 5vh; 
   }
   
   .grupo-boton button {
@@ -69,7 +68,7 @@
       border: 1px solid #707070 !important;
       border-radius: 10px !important;
       font-size: 11px !important;
-      width: 12vw !important;
+      width: 10vw !important;
       height: 5vh !important;
       margin-left: 2vw !important;
     }
@@ -78,15 +77,15 @@
     .search-container {
       position: relative;
       display: inline-block;
-      margin-left: 3vw;
+      margin-left: 5vw;
     }
     
     #search-input {
       padding-left: 30px;
-      border: 1px solid #ccc;
+      border: 1px solid #707070;
       border-radius: 5px;
-      height: 30px;
-      width: 250px;
+      height: 4vh;
+      width: 20vw;
       font-size: 14px;
     }
     

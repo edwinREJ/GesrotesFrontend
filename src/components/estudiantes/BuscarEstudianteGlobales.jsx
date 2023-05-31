@@ -1,49 +1,61 @@
 import { Filtrar } from './Filtrar'
 import CardEstudiante from './CardEstudiante'
 import { useState, useEffect } from 'react'
+import { useSelector} from 'react-redux';
 
 const BuscarEstudiantes = (props) => {
-  const [estudiantes, setEstudiantes] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [filter, setFilter] = useState('')
+  const [estudiantes, setEstudiantes] = useState([]);
+  const [estudiantesRegistrados, setEstudiantesRegistrados] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState('');
   const asignatura_id = props.asignatura_id;
+  const estado = useSelector(state => state.estado);
+
+  useEffect(() => {
+    const obtenerEstudiantesRegistrados = async () => {
+      try {
+        const response = await fetch(`http://localhost:2008/ListarEstudiantes/${asignatura_id}`,{
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        const data = await response.json();
+        console.log(data);
+        setEstudiantesRegistrados(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    obtenerEstudiantesRegistrados();
+  }, [asignatura_id,estado]); 
 
 
-/*Este metodo me permite consumir el microservicio el cual me retorna 
-una lista de estudiantes globales la cual los estudiantes aun no estan
-inscritos a la asignatura la cual fue selecionada. */
   useEffect(() => {
     const getEstudiantes = async () => {
       try {
         const response = await fetch('http://localhost:2101/estudiantesglobales');
         const data = await response.json();
-        setEstudiantes(data);
+        // Filtrar estudiantes y excluir los registrados
+        setEstudiantes(data.filter(estudiante => !estudiantesRegistrados.includes(estudiante.estudiante_id)));
         setLoading(false);
       } catch (error) {
         console.log(error);
       }
     };
-   
-    getEstudiantes();
-  }, []);
 
-  /* Con este metodo lo que realizo es filtrar los estudiantes 
-  cuyo nombre sea igual al ingresado por el input sin importar
-  si es mayusculas o minusculas. */
+    getEstudiantes();
+  }, [filter,estudiantesRegistrados]);
+
   const estudiantesFiltrados = estudiantes.filter((estudiante) =>
-  estudiante.nombre.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
-  );
+  estudiante.nombre.toLowerCase().includes(filter.toLowerCase()) 
+);
+
 
   return (
     <div className='container-buscar'>
-      {/* form filtrar */}
       <Filtrar filter={filter} setFilter={setFilter} />
-      {/* form filtrar */}
 
-      {/* section estudiantes, en esta parte ya con el estudiante o estudiantes que 
-      se vayan filtando los vamos a ir mostrando y para ello los datos son enviados
-      a la funcion cardEstudiante la cual nos ermite visualizar un estudiante en una tarjeta, 
-      con las caracteristcas previamente establecidas.*/}
       <section className='card-container-busqueda'>
         {loading ? (
           <p>Cargando...</p>
@@ -56,7 +68,6 @@ inscritos a la asignatura la cual fue selecionada. */
               usuario={estudiante.usuario}
               foto={estudiante.foto}
               asignatura_id={asignatura_id}
-              isEliminar={false}
             />
           ))
         ) : (
@@ -68,6 +79,7 @@ inscritos a la asignatura la cual fue selecionada. */
 };
 
 export default BuscarEstudiantes;
+
 
 
 

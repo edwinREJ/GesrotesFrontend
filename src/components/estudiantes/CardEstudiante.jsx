@@ -3,7 +3,7 @@ import './styles.css'
 import EliminarRegistro from './EliminarRegistro'
 import RegistrarEstudiante from './RegistrarEstudiante';
 
-function CardEstudiante({foto, nombre, estudiante_id, usuario,isEliminar,asignatura_id }) {
+function CardEstudiante({foto, nombre, estudiante_id, usuario,isEliminar,asignatura_id,actualizarEstudiantes }) {
 
 
   /* En esta parte como tal se establece la estuctura de la card con sus respectivos estilos,
@@ -31,7 +31,7 @@ function CardEstudiante({foto, nombre, estudiante_id, usuario,isEliminar,asignat
           {isEliminar ? (
             <EliminarRegistro asignatura_id={asignatura_id} estudiante_id={estudiante_id}/>
           ) : (
-            <RegistrarEstudiante asignatura_id={asignatura_id} estudiante_id={estudiante_id}/>
+            <RegistrarEstudiante asignatura_id={asignatura_id} estudiante_id={estudiante_id} actualizarEstudiantes={actualizarEstudiantes}/>
           )}
         </Card.Body>
 

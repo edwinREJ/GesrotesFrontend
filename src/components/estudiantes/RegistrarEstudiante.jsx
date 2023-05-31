@@ -7,40 +7,40 @@ import './styles.css'
   registrar un estudiante en la asignatura que previamente selecciono. */
 
   function RegistrarEstudiante(props) {
-
     const dispatch = useDispatch();
-    
-      const registrar = () => {
-          /* Construyo el objeto a enviar*/
-        const datos = {
-          asignatura_id: props.asignatura_id,
-          estudiante_id: props.estudiante_id
-        };
+  
+    const registrar = () => {
+      const datos = {
+        asignatura_id: props.asignatura_id,
+        estudiante_id: props.estudiante_id
+      };
+  
       fetch('http://localhost:2008/RegistrarEstudiante', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(datos)
-        })
-        .then(response => {
-          if (response.ok) {
-            console.log('Estudiante registrado exitosamente');
-            dispatch(cambiarEstado());
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log('Estudiante registrado exitosamente');
+          dispatch(cambiarEstado());
           } else {
             console.error('Error al registrar estudiante');
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Error:', error);
         });
     };
   
     return (
-      <div >
+      <div>
         <Button className='registrar-estudiante' onClick={registrar}>Registrar</Button>
       </div>
     );
   }
   
-  export default RegistrarEstudiante;  
+  export default RegistrarEstudiante;
+  

@@ -47,7 +47,7 @@ const EstudiantesRegistrados = (props) => {
         });
         const data = await response.json();
         setEstudiantes(data);
-        console.log(data);
+       
       } catch (error) {
         console.log(error);
       }

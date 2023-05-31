@@ -10,6 +10,15 @@ function EstadoAsignatura(props) {
 
   const { estudiantes, setEstudiantes } = useEstudiantes();
 
+  
+  /* Funcion que permite  desmarcar las casillas que previamente fueron seleccionadas. */
+  const DesmarcarTodos = () => {
+    const checkboxes = document.getElementsByName('estudiante');
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
+  };
+
   return (
     <Modal 
         {...props}
@@ -32,14 +41,13 @@ function EstadoAsignatura(props) {
        
       <Box sx={{display: 'grid',width: '75vw'}}>
 
-        <Box sx={{height: '10vh',display:'flex'}}>
+        <Box sx={{height: '10vh',display:'flex',marginTop:'4vh'}}>
           <div class="search-container">
             <input type="text" id="search-input" placeholder="Buscar estudiante por nombre"/>
             <span class="search-icon">&#128269;</span>
           </div>
-
           <GrupoBoton/>
-          <Button className='desmarcar-todos'>DESMARCAR TODOS</Button>
+          <Button className='desmarcar-todos' onClick={DesmarcarTodos}>DESMARCAR TODOS</Button>
         </Box>
 
 
