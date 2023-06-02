@@ -3,7 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Estudiantes from '../estudiantes/Estudiante'
+import Estudiantes from '../estudiantes/Estudiante';
 import Turno from '../turno/turno';
 import { useParams } from 'react-router-dom';
 
@@ -14,13 +14,13 @@ function TabPanel(props) {
     <div
       role="tabpanel"
       hidden={value !== index}
-      ide={`simple-tabpanel-${index}`}
+      id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
       {value === index && (
-        <Box sx={{ p:1  }}>
-          <Typography>{children}</Typography>
+        <Box sx={{ p: 1 }}>
+          <Typography sx={{ fontFamily: "Poppins, sans-serif" }}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -29,8 +29,8 @@ function TabPanel(props) {
 
 function a11yProps(index) {
   return {
-    ide: `simple-tab-${index}`,
-    'Poppins", sans-serif': `simple-tabpanel-${index}`,
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
   };
 }
 
@@ -44,20 +44,16 @@ export default function TabAsignatura() {
 
   const tabStyles = {
     root: {
-      flexGrow: 1,
-      fontFamily: '"Poppins", sans-serif',
-      textTransform: 'none',
-      minWidth: 0,
-      minHeight: 0,
-      fontWeight: 400,
-      fontSize: '1rem',
-      marginRight: '10px',
-      marginTop: '1vh',
-      marginBottom: '1vh',
-      color: '#000000',
+      marginTop: '2vh',
+      marginBottom: '2vh',
+      borderBottom: '1px solid #DFE0E2',
+
       '&.Mui-selected': {
+        border: '1px solid #DFE0E2',
+        borderBottom: 'none',
+        borderTopLeftRadius: '6px',
+        borderTopRightRadius: '6px',
         color: '#092167',
-        backgroundColor: '#DFE0E2',
       },
       '&.Mui-disabled': {
         color: '#343434',
@@ -65,14 +61,15 @@ export default function TabAsignatura() {
     },
   };
 
-   return (
-    <Box sx={{ width: '100%'}}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+  return (
+    <Box sx={{ fontFamily: "Poppins, sans-serif" }}>
+      <Box>
         <Tabs
           value={value}
           onChange={handleChange}
           TabIndicatorProps={{ style: { display: 'none' } }}
           indicatorColor="transparent"
+          variant="fullWidth"
         >
           <Tab label="Estudiantes" {...a11yProps(0)} sx={tabStyles.root} />
           <Tab label="Profesores" {...a11yProps(1)} sx={tabStyles.root} />
@@ -81,9 +78,9 @@ export default function TabAsignatura() {
           <Tab label="Documentos" {...a11yProps(4)} sx={tabStyles.root} />
         </Tabs>
       </Box>
-      
+
       <TabPanel value={value} index={0}>
-        <Estudiantes asignatura_id= {asignatura_id}/>
+        <Estudiantes asignatura_id={asignatura_id} />
       </TabPanel>
 
       <TabPanel value={value} index={1}>
@@ -95,16 +92,48 @@ export default function TabAsignatura() {
       </TabPanel>
 
       <TabPanel value={value} index={3}>
-        <Turno/>
+        <Turno />
       </TabPanel>
 
       <TabPanel value={value} index={4}>
         Item cinco
       </TabPanel>
-
     </Box>
   );
 }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//TabAsignatura

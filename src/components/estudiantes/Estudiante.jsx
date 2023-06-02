@@ -15,7 +15,7 @@ function Estudiantes(props){
                     <BuscarEstudianteGlobales asignatura_id={asignatura_id}/>
             </Box>
 
-            <Box sx={{overflow: 'auto',borderLeft: '2px solid #DFE0E2',height: '68vh', paddingLeft: theme => theme.spacing(2)
+            <Box sx={{overflow: 'auto',borderLeft: '1px solid #DFE0E2',height: '64vh', paddingLeft: theme => theme.spacing(2)
                   }}>
                   
                 <Box sx={{display: 'grid'}}>

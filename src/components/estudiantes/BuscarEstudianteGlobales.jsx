@@ -11,6 +11,9 @@ const BuscarEstudiantes = (props) => {
   const asignatura_id = props.asignatura_id;
   const estado = useSelector(state => state.estado);
 
+
+  /* Utilizo el microservicio donde obtengo una listas de ids de estudiantes los cuales 
+    estan registrados a la asignatura en la cual se ha ingresado anteriormente */
   useEffect(() => {
     const obtenerEstudiantesRegistrados = async () => {
       try {
@@ -31,12 +34,18 @@ const BuscarEstudiantes = (props) => {
   }, [asignatura_id,estado]); 
 
 
+/* En este metodo consumo un microservico el cual permite tener los estudiantes que no estan 
+matriculados, para asi posteriormente poderlos registrar a la asignatura previamente seleccionada.
+ */
   useEffect(() => {
     const getEstudiantes = async () => {
       try {
         const response = await fetch('http://localhost:2101/estudiantesglobales');
         const data = await response.json();
-        // Filtrar estudiantes y excluir los registrados
+        /*Obteniendo los estudiantes con el metodo getEstudiantes que aun no estan registrados previamente, 
+        me encargo de filtrar los estudiantes que ya estan matriculados a esta asignatura, con
+        la lista de ids obtenidas en el metodo getEstudiantesRegistrados de esta manera garantizo
+        que la lista estudiantes este actualizada. */
         setEstudiantes(data.filter(estudiante => !estudiantesRegistrados.includes(estudiante.estudiante_id)));
         setLoading(false);
       } catch (error) {
@@ -77,7 +86,6 @@ const BuscarEstudiantes = (props) => {
     </div>
   );
 };
-
 export default BuscarEstudiantes;
 
 

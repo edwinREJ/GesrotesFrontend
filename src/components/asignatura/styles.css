@@ -60,8 +60,8 @@
 
 .card-container-asignatura {
   display: grid;
-  grid-template-columns: repeat(3, 0.1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
 }
 
 .body-contenido-estado {
@@ -152,4 +152,8 @@
   width: 10VW;
   height: 35vh;
   color: #fff;
+}
+.custom-tabs .ant-tabs-ink-bar {
+  background-color: black;
+  border-color: #092167;
 }

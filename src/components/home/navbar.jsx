@@ -1,21 +1,28 @@
 import { Navbar, Nav,Container} from "react-bootstrap";
-import {  NavLink, } from "react-router-dom";
+import { NavLink, } from "react-router-dom";
 import { CiLogout} from 'react-icons/ci';
 import { VscBook} from 'react-icons/vsc';
 import {BsPersonCheckFill,BsCardChecklist} from 'react-icons/bs';
 import  {RiUserSettingsFill} from 'react-icons/ri'
 import {FaPhoneSquareAlt} from 'react-icons/fa'
 import './styles.css'
+import React, { useState } from 'react';
 
 function NavbarB() {
+
+  const [navbarOpen, setNavbarOpen] = useState(false);
+
+  const toggleNavbar = () => {
+    setNavbarOpen(!navbarOpen);
+  };
   
     return(
       <>
       <Navbar className="navBg" variant="dark" expand="lg">
       <Container>
         <Navbar.Brand>GESROTES</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleNavbar} />
+          <Navbar.Collapse id="basic-navbar-nav" className={navbarOpen ? 'show' : ''}>
           <div className="gestion">
             <p>GESTIÓN</p>
             <Nav className="nav-grupos">

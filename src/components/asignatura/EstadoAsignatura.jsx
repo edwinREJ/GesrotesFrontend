@@ -32,23 +32,23 @@ function EstadoAsignatura(props) {
             </div>
              
             <div className='body-contenido-estado'>
-              <CardEstado
+              <CardEstado key={'1'}
                 imagen={IoPersonCircleSharp} titulo={'ESTUDIANTES'} subtitulo={'24 estudiantes'} boton={'COMPLETO'}
               />
 
-              <CardEstado
+              <CardEstado key={'2'}
                imagen={BsPersonVideo3} titulo={'PROFESORES'} subtitulo={'faltan 2'} boton={'VERIFICAR'}
               />
 
-              <CardEstado
+              <CardEstado key={'3'}
                 imagen={BsArrowCounterclockwise} titulo={'ROTES'} subtitulo={'sin'} boton={'AGREGAR'}
               />
 
-              <CardEstado
+              <CardEstado key={'4'}
                 imagen={BiCalendarEvent} titulo={'TURNOS'} subtitulo={'30 turnos'} boton={'COMPLETO'}
               />
 
-              <CardEstado
+              <CardEstado key={'5'}
                 imagen={HiClipboardList} titulo={'DOCUMENTOS'} subtitulo={'2 documentos'} boton={'VERIFICAR'}
               />
             </div>
