@@ -1,21 +1,21 @@
 .contacto  {
-  position: relative;
-  margin-top: 19vh;
+  margin-top: 10vh;
   text-align: left;
   border-top: 0.2vw solid #DFE0E2;
-  width: 100%;
-
+  
 }
 
 .icono-contacto {
-  margin-top: 7%;
-  font-size: 2.2em;
+  margin-top: 5%;
+  font-size: 2em;
   display: inline-block;
   vertical-align: middle;
-  margin-right: 2%
+  margin-right: 2%;
+  margin-left: 1vw;
 }
 
 .texto {
+  margin-top: 1vh;
   display: inline-block;
   vertical-align: middle;
   text-align: left;
@@ -36,27 +36,10 @@
   color: black;
 }
 
-.nav-link svg {
-  margin-right: 2%; /* ajusta la cantidad de espacio aquí */
-}
-
 .breadcrumbs-container {
   height: 80%;
   max-width: 80%;
   margin: 2.5vw
-}
-
-.nav-grupos {
-  margin: 1vw 0;
-}
-
-.nav-grupos .nav-link {
-  display: block;
-  padding: 3.3%;
-  text-decoration: none;
-  color: black;
-  font-family: "Poppins", sans-serif;
-  width: 100%;
 }
 
 .gestion {
@@ -72,23 +55,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-.navbar-brand {
-  text-decoration: none;
-  font-family: "Poppins", sans-serif;
-  color: black;
-}
 
-.navbar-collapse{
-  border-top: 0.2vw solid #DFE0E2;
-  margin-top: 7%;
-}
-.navbar {
-  margin-top: 20%;
-}
-
-.navbar-nav {
-  list-style: none;
-}
 .gestion p {
   margin-bottom: 10%;
   font-family: "Poppins", sans-serif;
@@ -101,10 +68,36 @@
   color: black;
 }
 
+.menu-divider {
+  margin-top: 11vh;
+  background-color: transparent !important;
+  border-right: none !important;
+  text-align: left; 
+}
+.menu-divider p{
+  margin-left: 1.5vw;
+}
 
-.nav-link:focus,
-.nav-link.active {
-  background-color: #dfe0e2 !important;
-  color: #960d0d !important;
+.selected-menu-item {
+  background-color: #DFE0E2 !important;
+  color: #960D0D !important;
+}
+
+.collapse-button-container {
+  display: flex;
+  align-items: center;
+  margin-top: 2vh;
+  justify-content: space-between;
+  border-bottom: 0.2vw solid #DFE0E2;
+}
+
+.icon-text-container {
+  display: flex;
+  align-items: center;
+  
+}
+
+.icon-text-container > * {
+  margin-right: 1vw; 
 }
 

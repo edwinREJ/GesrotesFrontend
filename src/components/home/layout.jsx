@@ -9,7 +9,7 @@ function Layout() {
     de pan y donde se muestra el contenido de la opcion elejida por el menu. */
     <Box sx={{  overflow: 'hidden', height: '100vh', display: 'grid', gridTemplateColumns: 'auto 1fr' }}>
       
-      <Box sx={{ width: '31vh', height: '97vh', background: '#F7F7F7', m: 1, borderRadius: 3, paddingLeft:'1.7vw',
+      <Box sx={{ width: 'auto', height: '97vh', background: '#F7F7F7', m: 1, borderRadius: 3, paddingLeft:'1.7vw',
                   paddingRight:'1.7vw', border: '1px solid #DFE0E2'}}>
         <NavbarB/> 
       </Box>
