@@ -4,7 +4,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Estudiantes from '../estudiantes-HE-08/Estudiante';
-import Turno from '../turno/turno';
+import Turno from '../turno-HE-01/turno';
 import { useParams } from 'react-router-dom';
 
 function TabPanel(props) {

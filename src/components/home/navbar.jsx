@@ -1,4 +1,3 @@
-import { Navbar, Nav, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { CiLogout } from 'react-icons/ci';
 import { VscBook,VscThreeBars,VscWorkspaceTrusted } from 'react-icons/vsc';
@@ -22,8 +21,8 @@ function NavbarB() {
   };
 
   const itemsGestion = [
-    { key: '1', label: 'Verificar Estudiantes', icon: <BsCardChecklist  /> , path: "/BotonGestionEstudiante"},
-    { key: '2', label: 'Verificar Docentes', icon: <BsPersonCheckFill /> , path: "/CrearEtiqueta"},
+    { key: '1', label: 'Verificar Estudiantes', icon: <BsCardChecklist  /> ,},
+    { key: '2', label: 'Verificar Docentes', icon: <BsPersonCheckFill />},
     { key: '3', label: 'Asignaturas', icon: <VscBook />, path: "/ListaDeAsignaturas"},
   ];
 

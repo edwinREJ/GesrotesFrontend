@@ -97,20 +97,19 @@ function GestionEstudiante(props) {
   };
   
 
-  useEffect(() => {
+ /*useEffect(() => {
     if (botonSeleccionado === 1) {
       Selecionados();
     }
-  }, [botonSeleccionado]);
+  }, [botonSeleccionado]); */
 
   /*Segun el valor obtenido en el input se filta el estudiante
-    el cual vaya cumpliendo con las caracteristicas del nombre que se este digitando.*/
+    el cual vaya cumpliendo con las caracteristicas del nombre que se este digitando. */
   const handleInput = ({ target }) => {
 		setFilter(target.value)
 	}
   const estudiantesFiltrados = estudiantes.filter((estudiante) =>
-  estudiante.nombre && estudiante.nombre.toLowerCase().includes(filter.toLowerCase()) 
-);
+  estudiante.nombre && estudiante.nombre.toLowerCase().includes(filter.toLowerCase()));
 
 
   console.log(botonSeleccionado);

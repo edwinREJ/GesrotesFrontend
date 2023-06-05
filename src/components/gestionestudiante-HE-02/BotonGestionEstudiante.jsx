@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 function BotonGestionEstudiante(){
   const [modalShow, setModalShow] = React.useState(false);
     return(
-      <div ><Button variant="primary"  onClick={()  => setModalShow(true)} >
-      Estudiante
+      <div ><Button  onClick={()  => setModalShow(true)} >
+      Gestion Estudiantes
     </Button>
 
     <

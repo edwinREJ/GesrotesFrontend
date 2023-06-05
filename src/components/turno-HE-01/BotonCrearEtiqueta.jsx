@@ -1,12 +1,13 @@
 import Button from 'react-bootstrap/Button';
 import ModalEtiqueta from "../gestionetiquetas-HE-06/ModalEtiqueta";
 import React, { useState } from 'react';
+import './stylesTurno.css'
 
-function CrearEtiqueta(){
+function BotonCrearEtiqueta(){
   const [modalShow, setModalShow] = React.useState(false);
     return(
-      <div ><Button variant="primary"  onClick={()  => setModalShow(true)} >
-      Crear etiqueta
+      <div ><Button variant="primary" onClick={()  => setModalShow(true)} >
+      Gestion Etiquetas
     </Button>
 
     <
@@ -14,4 +15,4 @@ function CrearEtiqueta(){
       onHide={() => setModalShow(false)}
     /></div>
     );
-}export default CrearEtiqueta;
+}export default BotonCrearEtiqueta;

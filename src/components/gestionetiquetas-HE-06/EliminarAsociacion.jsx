@@ -31,7 +31,8 @@ function EliminarAsociacion(props) {
   return (
     <div >
       <Button className="delete-button" onClick={eliminar}>
-      <img src={"eliminar.png"} alt="Eliminar" /></Button>
+      <img src={process.env.PUBLIC_URL + "/eliminar.png"} alt="Eliminar" />
+      </Button>
     </div>
   );
 }
