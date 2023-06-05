@@ -1,8 +1,7 @@
 .contacto  {
-  margin-top: 10vh;
+  margin-top: 8vh;
   text-align: left;
-  border-top: 0.2vw solid #DFE0E2;
-  
+  border-top: 0.2vw solid #DFE0E2; 
 }
 
 .icono-contacto {
@@ -11,7 +10,7 @@
   display: inline-block;
   vertical-align: middle;
   margin-right: 2%;
-  margin-left: 1vw;
+  margin-left: 1.2vw;
 }
 
 .texto {
@@ -55,7 +54,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-
 .gestion p {
   margin-bottom: 10%;
   font-family: "Poppins", sans-serif;
@@ -75,6 +73,7 @@
   text-align: left; 
 }
 .menu-divider p{
+  margin-bottom: 3vh;
   margin-left: 1.5vw;
 }
 
@@ -86,15 +85,15 @@
 .collapse-button-container {
   display: flex;
   align-items: center;
-  margin-top: 2vh;
+  margin-top: 3vh;
   justify-content: space-between;
   border-bottom: 0.2vw solid #DFE0E2;
+  margin-left: 1.2vw;
 }
 
 .icon-text-container {
   display: flex;
   align-items: center;
-  
 }
 
 .icon-text-container > * {

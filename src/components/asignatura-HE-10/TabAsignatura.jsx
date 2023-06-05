@@ -3,7 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Estudiantes from '../estudiantes/Estudiante';
+import Estudiantes from '../estudiantes-HE-08/Estudiante';
 import Turno from '../turno/turno';
 import { useParams } from 'react-router-dom';
 
@@ -92,7 +92,7 @@ export default function TabAsignatura() {
       </TabPanel>
 
       <TabPanel value={value} index={3}>
-        <Turno />
+        <Turno asignatura_id={asignatura_id}/>
       </TabPanel>
 
       <TabPanel value={value} index={4}>

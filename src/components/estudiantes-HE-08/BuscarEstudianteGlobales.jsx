@@ -80,7 +80,7 @@ matriculados, para asi posteriormente poderlos registrar a la asignatura previam
             />
           ))
         ) : (
-          <p>No se encontró la búsqueda</p>
+          <p>No se encontró el estudiante.</p>
         )}
       </section>
     </div>

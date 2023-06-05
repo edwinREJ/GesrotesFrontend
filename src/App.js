@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes,Route} from 'react-router-dom';
 import './App.css';
 import Layout from './components/home/layout';
-import CrearEtiqueta from './components/asignatura/CrearEtiqueta.jsx';
+import CrearEtiqueta from './components/asignatura-HE-10/CrearEtiqueta.jsx';
 import NavbarB from './components/home/navbar';
-import TabAsignatura from './components/asignatura/TabAsignatura';
-import ListaDeAsignaturas from './components/asignatura/ListaDeAsignaturas';
-import EstadoAsignatura from './components/asignatura/EstadoAsignatura';
-import BotonGestionEstudiante from './components/gestionestudiante/BotonGestionEstudiante'
+import TabAsignatura from './components/asignatura-HE-10/TabAsignatura';
+import ListaDeAsignaturas from './components/asignatura-HE-10/ListaDeAsignaturas';
+import EstadoAsignatura from './components/asignatura-HE-10/EstadoAsignatura';
+import BotonGestionEstudiante from './components/gestionestudiante-HE-02/BotonGestionEstudiante'
 
 
 function App() {

@@ -3,19 +3,22 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import './StylesGestionEstudiante.css';
 import React, { useState } from "react";
 
-function GrupoBoton() {
+function GrupoBoton({setBotonSeleccionado}) {
   const [activeButton, setActiveButton] = useState(0);
 
   const todos = () => {
     setActiveButton(0);
+    setBotonSeleccionado(0);
   };
 
   const seleccionados = () => {
     setActiveButton(1);
+    setBotonSeleccionado(1);
   };
 
   const no_seleccionados = () => {
     setActiveButton(2);
+    setBotonSeleccionado(2);
   };
 
   return (
