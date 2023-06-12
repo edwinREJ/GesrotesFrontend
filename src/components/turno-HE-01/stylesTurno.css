@@ -1,4 +1,18 @@
-.boton-turno{
-    background-color: blue !important;
-    border: none;
+.button {
+    background-color: #092167 !important;
+    font-size: 10px !important;
+    margin-right: 10px !important;
+    width: 7vw !important;
+    height: 6vh !important;
+  }
+  
+  
+
+.app-bar{
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none!important;
+}
+.text{
+    border: none!important;
 }

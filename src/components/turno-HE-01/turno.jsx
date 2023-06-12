@@ -7,8 +7,7 @@ function Turno(){
 
         <Box sx={{display: 'grid'}}>
 
-        <Box sx={{height: '14vh', background: '#F7F7F7', m: 1, paddingLeft: theme => theme.spacing(3),
-                  paddingRight: theme => theme.spacing(3) }}>
+        <Box sx={{height: '14vh', background: '#F7F7F7' }}>
            <SearchAppBar/>
         </Box>
         

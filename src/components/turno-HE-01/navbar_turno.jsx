@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -9,9 +9,10 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Stack from '@mui/material/Stack';
-import BotonGestionEstudiante from '../gestionestudiante-HE-02/BotonGestionEstudiante';
-import BotonCrearEtiqueta from './BotonCrearEtiqueta';
+import ModalEtiqueta from "../gestionetiquetas-HE-06/ModalEtiqueta";
 import './stylesTurno.css'
+import GestionEstudiante from '../gestionestudiante-HE-02/GestionEstudiante';
+
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -24,11 +25,13 @@ const Search = styled('div')(({ theme }) => ({
   marginLeft: 0,
   width: '100%',
   [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(2),
+    marginLeft: theme.spacing(7),
     width: 'auto',
   },
 }));
 
+
+/*Estilos del icono del buscador*/
 const SearchIconWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 2),
   height: '100%',
@@ -37,16 +40,31 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  color: '#707070',
 }));
 
+/*Estilos del input*/
 const StyledSearchEstudentBar = styled(InputBase)(({ theme }) => ({
+  marginRight: '2vw',
   color: 'inherit', 
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(5)})`,
     width: '100%',
+    color: 'black',
   },
+}));
+
+
+/* Se le da los estilos a buscador de año y mes*/
+const StyledStack = styled(Stack)(({ theme }) => ({
+  width: 100,
+  marginTop: '-2vh',
+  display: 'flex',
+  alignItems: 'center', 
+  justifyContent: 'center',
+  border: 'none',
 }));
 
 function SearchYear() {
@@ -55,15 +73,14 @@ function SearchYear() {
     getOptionLabel: (option) => option.label,
   };
   return (
-    <Stack spacing={1} sx={{ width: 100 }}>
+    <StyledStack spacing={1}>
       <Autocomplete
         {...defaultProps}
         renderInput={(params) => (
-          <TextField {...params} label="2022" variant="standard" />
+          <TextField className='text' {...params} label="Año" variant="standard" />
         )}
       />
-     
-    </Stack>
+    </StyledStack>
   );
 }
 
@@ -84,15 +101,16 @@ function SearchMonth() {
     getOptionLabel: (option) => option.label,
   };
   return (
-    <Stack spacing={1} sx={{ width: 150 }}>
+    <StyledStack spacing={1}>
       <Autocomplete
         {...defaultProps}
         renderInput={(params) => (
-          <TextField {...params} label="Enero" variant="standard" />
+          <TextField {...params} label="Mes" variant="standard"    
+          />
         )}
       />
      
-    </Stack>
+     </StyledStack>
   );
 }
 
@@ -112,14 +130,30 @@ const Months = [
   { label: 'Diciembre'}
 ]
 
+
+
+
 export default function SearchAppBar() {
+  const [modalShowGEstudiantes, setModalShowGEstudiantes] = useState(false);
+  const [modalShowGEtiquetas, setModalShowGEtiquetas] = useState(false);
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" className='app-bar'>
         <Toolbar>
-          <BotonGestionEstudiante className='boton-turno'/>
-          <BotonCrearEtiqueta className='boton-turno'/>
-          <Button variant="contained">Alimentacion</Button>
+          
+          <Button variant="contained" className="button" onClick={()  => setModalShowGEstudiantes(true)} >
+            Gestion Estudiantes
+          </Button>
+          <GestionEstudiante show={modalShowGEstudiantes}
+          onHide={() => setModalShowGEstudiantes(false)}/>
+          
+          <Button className="button" variant="contained" onClick={()  => setModalShowGEtiquetas(true)} >
+            Gestion Etiquetas
+          </Button>
+          <ModalEtiqueta show={modalShowGEtiquetas}
+          onHide={() => setModalShowGEtiquetas(false)}/>
+
+          <Button variant="contained" className="button" >Alimentacion</Button>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -127,7 +161,6 @@ export default function SearchAppBar() {
             <StyledSearchEstudentBar
               placeholder="Buscar estudiante "
               inputProps={{ 'aria-label': 'search' }}
-
             />
           </Search>
           <SearchYear/>
