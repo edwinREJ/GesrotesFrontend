@@ -1,4 +1,4 @@
-.button {
+    .button {
     background-color: #092167 !important;
     font-size: 10px !important;
     margin-right: 10px !important;
@@ -6,13 +6,49 @@
     height: 6vh !important;
   }
   
-  
-
-.app-bar{
+  .app-bar {
     background-color: transparent !important;
     box-shadow: none !important;
-    border: none!important;
-}
-.text{
-    border: none!important;
-}
+    border: none !important;
+  }
+  
+  .text {
+    display: flex;
+    justify-content: center;
+    width: 7vw !important;
+    height: 7vh !important;
+  }
+  
+  .text input {
+    border: none;
+  }
+  
+  .btn-validacion {
+    background-color: #960D0D !important;
+    color: white !important;
+    width: 7vw !important;
+    height: 6vh !important;
+    font-size: 10px !important;
+  }
+  
+  .card-turno{
+    border: 1px solid #092167 !important;
+    width: 6.5vw;
+    cursor: pointer;
+  }
+
+  .card-turno-boton{
+    margin-top: 2vh;
+    background-color: transparent;
+    border: none;
+  }
+  .card-turno-boton svg {
+    /* Estilos para el ícono */
+    font-size: 34px;
+    color: #707070;
+  }
+
+  .card-turno.hovered {
+    background-color: lightgray;
+  }
+  

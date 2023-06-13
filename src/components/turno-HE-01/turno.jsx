@@ -1,20 +1,22 @@
+import React, { useState } from 'react';
 import { Box } from '@mui/material';
 import SearchAppBar from "./navbar_turno"
+import Calendario from "./Calendario"
 
+function Turno() {
+  const [selectedMonth, setSelectedMonth] = useState(1);
+  const [selectedYear, setSelectedYear] = useState(1);
 
-function Turno(){
-    return(
-
-        <Box sx={{display: 'grid'}}>
-
-        <Box sx={{height: '14vh', background: '#F7F7F7' }}>
-           <SearchAppBar/>
-        </Box>
-        
-        <Box sx={{overflowY: 'auto', height: '45vh', background: '#F7F7F7', m: 1, borderRadius: 3, paddingLeft: theme => theme.spacing(3),
-                  paddingRight: theme => theme.spacing(3), border: '1px solid #DFE0E2' }}>
-           caja 2
-        </Box>
+  return (
+    <Box sx={{ display: 'grid' }}>
+      <Box sx={{ height: '8vh', background: '#F7F7F7' }}>
+        <SearchAppBar setSelectedMonth={setSelectedMonth} setSelectedYear={setSelectedYear} />
+      </Box>
+      <Box sx={{ overflowY: 'auto', height: '55vh', background: '#F7F7F7',marginTop:'3vh' }}>
+      <Calendario selectedMonth={selectedMonth} selectedYear={selectedYear} />
+      </Box>
     </Box>
-    );
-}  export default Turno;
+  );
+}
+
+export default Turno;

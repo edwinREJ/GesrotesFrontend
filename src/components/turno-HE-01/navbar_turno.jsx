@@ -22,10 +22,9 @@ const Search = styled('div')(({ theme }) => ({
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-  marginLeft: 0,
   width: '100%',
   [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(7),
+    marginLeft: theme.spacing(3),
     width: 'auto',
   },
 }));
@@ -45,7 +44,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 
 /*Estilos del input*/
 const StyledSearchEstudentBar = styled(InputBase)(({ theme }) => ({
-  marginRight: '2vw',
+  marginRight: '3vw',
   color: 'inherit', 
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
@@ -53,6 +52,8 @@ const StyledSearchEstudentBar = styled(InputBase)(({ theme }) => ({
     paddingLeft: `calc(1em + ${theme.spacing(5)})`,
     width: '100%',
     color: 'black',
+    height: '2vh',
+    borderRadius: '35px',
   },
 }));
 
@@ -60,21 +61,30 @@ const StyledSearchEstudentBar = styled(InputBase)(({ theme }) => ({
 /* Se le da los estilos a buscador de año y mes*/
 const StyledStack = styled(Stack)(({ theme }) => ({
   width: 100,
-  marginTop: '-2vh',
+  marginTop: '-5vh',
   display: 'flex',
   alignItems: 'center', 
   justifyContent: 'center',
-  border: 'none',
+  marginRight: '3vw',
 }));
 
-function SearchYear() {
+
+
+function SearchYear({ setSelectedYear }) {
+
+  const handleYearChange = (event, newValue) => {
+    setSelectedYear(newValue.label); // Actualiza el año seleccionado utilizando la función pasada como parámetro
+  };
+
   const defaultProps = {
     options: Years,
     getOptionLabel: (option) => option.label,
   };
+
   return (
     <StyledStack spacing={1}>
       <Autocomplete
+        onChange={handleYearChange}
         {...defaultProps}
         renderInput={(params) => (
           <TextField className='text' {...params} label="Año" variant="standard" />
@@ -83,6 +93,7 @@ function SearchYear() {
     </StyledStack>
   );
 }
+
 
 
 const Years = [
@@ -95,24 +106,29 @@ const Years = [
   { label: 2029}
 ]
 
-function SearchMonth() {
+function SearchMonth({ setSelectedMonth }) {
+  const handleMonthChange = (event, newValue) => {
+    setSelectedMonth(newValue.label);
+  };
+
   const defaultProps = {
     options: Months,
     getOptionLabel: (option) => option.label,
   };
+
   return (
     <StyledStack spacing={1}>
       <Autocomplete
+        onChange={handleMonthChange}
         {...defaultProps}
         renderInput={(params) => (
-          <TextField {...params} label="Mes" variant="standard"    
-          />
+          <TextField className='text' {...params} label="Mes" variant="standard" />
         )}
       />
-     
-     </StyledStack>
+    </StyledStack>
   );
 }
+
 
 
 const Months = [
@@ -130,10 +146,7 @@ const Months = [
   { label: 'Diciembre'}
 ]
 
-
-
-
-export default function SearchAppBar() {
+export default function SearchAppBar({setSelectedMonth, setSelectedYear }) {
   const [modalShowGEstudiantes, setModalShowGEstudiantes] = useState(false);
   const [modalShowGEtiquetas, setModalShowGEtiquetas] = useState(false);
   return (
@@ -163,8 +176,9 @@ export default function SearchAppBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <SearchYear/>
-          <SearchMonth/>
+          <SearchYear setSelectedYear={setSelectedYear}/>
+          <SearchMonth setSelectedMonth={setSelectedMonth}/>
+          <Button className='btn-validacion'>Validacion de turno</Button>
         </Toolbar>
       </AppBar>
     </Box>

@@ -6,7 +6,6 @@ import { RiUserSettingsFill } from 'react-icons/ri'
 import { FaPhoneSquareAlt } from 'react-icons/fa'
 import React, { useState } from 'react';
 import {Layout, Menu, Button } from 'antd';
-
 import './styles.css'
 
 const { Sider } = Layout;
@@ -21,14 +20,14 @@ function NavbarB() {
   };
 
   const itemsGestion = [
-    { key: '1', label: 'Verificar Estudiantes', icon: <BsCardChecklist  /> ,},
-    { key: '2', label: 'Verificar Docentes', icon: <BsPersonCheckFill />},
+    { key: '1', label: 'Verificar Estudiantes', icon: <BsCardChecklist  /> , path: "/"},
+    { key: '2', label: 'Verificar Docentes', icon: <BsPersonCheckFill /> , path: "/"},
     { key: '3', label: 'Asignaturas', icon: <VscBook />, path: "/ListaDeAsignaturas"},
   ];
 
   const itemsPerfil = [
-    { key: '4', label: 'Configuración', icon: <RiUserSettingsFill /> },
-    { key: '5', label: ' Salir', icon: <CiLogout /> },
+    { key: '4', label: 'Configuración', icon: <RiUserSettingsFill />, path: "/" },
+    { key: '5', label: ' Salir', icon: <CiLogout />, path: "/" },
   ];
 
   return (
