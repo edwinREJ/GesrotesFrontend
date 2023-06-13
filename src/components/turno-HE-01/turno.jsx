@@ -4,8 +4,8 @@ import SearchAppBar from "./navbar_turno"
 import Calendario from "./Calendario"
 
 function Turno() {
-  const [selectedMonth, setSelectedMonth] = useState(1);
-  const [selectedYear, setSelectedYear] = useState(1);
+  const [selectedMonth, setSelectedMonth] = useState('');
+  const [selectedYear, setSelectedYear] = useState('');
 
   return (
     <Box sx={{ display: 'grid' }}>

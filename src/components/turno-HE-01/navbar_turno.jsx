@@ -73,12 +73,12 @@ const StyledStack = styled(Stack)(({ theme }) => ({
 function SearchYear({ setSelectedYear }) {
 
   const handleYearChange = (event, newValue) => {
-    setSelectedYear(newValue.label); // Actualiza el año seleccionado utilizando la función pasada como parámetro
+    setSelectedYear(newValue.label.toString()); // Actualiza el año seleccionado utilizando la función pasada como parámetro
   };
 
   const defaultProps = {
     options: Years,
-    getOptionLabel: (option) => option.label,
+    getOptionLabel: (option) => option.label.toString(),
   };
 
   return (
@@ -108,7 +108,23 @@ const Years = [
 
 function SearchMonth({ setSelectedMonth }) {
   const handleMonthChange = (event, newValue) => {
-    setSelectedMonth(newValue.label);
+    const monthMap = {
+      Enero: '01',
+      Febrero: '02',
+      Marzo: '03',
+      Abril: '04',
+      Mayo: '05',
+      Junio: '06',
+      Julio: '07',
+      Agosto: '08',
+      Septiembre: '09',
+      Octubre: '10',
+      Noviembre: '11',
+      Diciembre: '12'
+    };
+
+    const selectedMonthNumber = monthMap[newValue.label];
+    setSelectedMonth(selectedMonthNumber);
   };
 
   const defaultProps = {
@@ -138,13 +154,14 @@ const Months = [
   { label: 'Abril' },
   { label: 'Mayo' },
   { label: 'Junio' },
-  { label: 'Julio'},
-  { label: 'Agosto'},
-  { label: 'Septiembre'},
-  { label: 'Octubre'},
-  { label: 'Noviembre'},
-  { label: 'Diciembre'}
-]
+  { label: 'Julio' },
+  { label: 'Agosto' },
+  { label: 'Septiembre' },
+  { label: 'Octubre' },
+  { label: 'Noviembre' },
+  { label: 'Diciembre' }
+];
+
 
 export default function SearchAppBar({setSelectedMonth, setSelectedYear }) {
   const [modalShowGEstudiantes, setModalShowGEstudiantes] = useState(false);

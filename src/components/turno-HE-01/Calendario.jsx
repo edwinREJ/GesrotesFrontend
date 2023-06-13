@@ -36,9 +36,9 @@ const Calendario = ({ selectedMonth, selectedYear }) => {
       key: 'estudiante',
       width: 200, // Ancho de la columna combinada
     });
-
+    
     const daysInMonth = dayjs(`${selectedYear}-${selectedMonth}`).daysInMonth();
-
+    console.log(daysInMonth)
     for (let day = 1; day <= daysInMonth; day++) {
       const date = dayjs(`${selectedYear}-${selectedMonth}-${day}`);
       const dayName = date.format('dddd');
