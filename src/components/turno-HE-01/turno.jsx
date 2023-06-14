@@ -4,16 +4,18 @@ import SearchAppBar from "./navbar_turno"
 import Calendario from "./Calendario"
 
 function Turno() {
-  const [selectedMonth, setSelectedMonth] = useState('');
-  const [selectedYear, setSelectedYear] = useState('');
+
+  /* Fecha que se mostrara en la tabla turno por defecto. */
+  const [selectedMonth, setSelectedMonth] = useState('1');
+  const [selectedYear, setSelectedYear] = useState('2023');
 
   return (
     <Box sx={{ display: 'grid' }}>
       <Box sx={{ height: '8vh', background: '#F7F7F7' }}>
-        <SearchAppBar setSelectedMonth={setSelectedMonth} setSelectedYear={setSelectedYear} />
+        <SearchAppBar setSelectedMonth={setSelectedMonth} setSelectedYear={setSelectedYear}/>
       </Box>
-      <Box sx={{ overflowY: 'auto', height: '55vh', background: '#F7F7F7',marginTop:'3vh' }}>
-      <Calendario selectedMonth={selectedMonth} selectedYear={selectedYear} />
+      <Box sx={{  height: '55vh', background: '#F7F7F7',marginTop:'3vh' }}>
+        <Calendario selectedMonth={selectedMonth} selectedYear={selectedYear} />
       </Box>
     </Box>
   );

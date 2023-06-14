@@ -72,13 +72,16 @@ const StyledStack = styled(Stack)(({ theme }) => ({
 
 function SearchYear({ setSelectedYear }) {
 
+ 
   const handleYearChange = (event, newValue) => {
+    if(newValue!==null)
     setSelectedYear(newValue.label.toString()); // Actualiza el año seleccionado utilizando la función pasada como parámetro
   };
 
   const defaultProps = {
     options: Years,
     getOptionLabel: (option) => option.label.toString(),
+    
   };
 
   return (
@@ -94,8 +97,6 @@ function SearchYear({ setSelectedYear }) {
   );
 }
 
-
-
 const Years = [
   { label: 2023 },
   { label: 2024 },
@@ -108,24 +109,28 @@ const Years = [
 
 function SearchMonth({ setSelectedMonth }) {
   const handleMonthChange = (event, newValue) => {
-    const monthMap = {
-      Enero: '01',
-      Febrero: '02',
-      Marzo: '03',
-      Abril: '04',
-      Mayo: '05',
-      Junio: '06',
-      Julio: '07',
-      Agosto: '08',
-      Septiembre: '09',
-      Octubre: '10',
-      Noviembre: '11',
-      Diciembre: '12'
-    };
-
+    
+    if(newValue !== null){
+      const monthMap = {
+        Enero: '01',
+        Febrero: '02',
+        Marzo: '03',
+        Abril: '04',
+        Mayo: '05',
+        Junio: '06',
+        Julio: '07',
+        Agosto: '08',
+        Septiembre: '09',
+        Octubre: '10',
+        Noviembre: '11',
+        Diciembre: '12'
+      };
+  
+      
     const selectedMonthNumber = monthMap[newValue.label];
-    setSelectedMonth(selectedMonthNumber);
-  };
+      setSelectedMonth(selectedMonthNumber);
+    };
+    }
 
   const defaultProps = {
     options: Months,
@@ -144,8 +149,6 @@ function SearchMonth({ setSelectedMonth }) {
     </StyledStack>
   );
 }
-
-
 
 const Months = [
   { label: 'Enero' },
@@ -166,6 +169,15 @@ const Months = [
 export default function SearchAppBar({setSelectedMonth, setSelectedYear }) {
   const [modalShowGEstudiantes, setModalShowGEstudiantes] = useState(false);
   const [modalShowGEtiquetas, setModalShowGEtiquetas] = useState(false);
+  const [page, setPage] = useState(0); // Estado para controlar la página actual
+
+  const handlePrevPage = () => {
+    setPage((prevPage) => prevPage - 1);
+  };
+
+  const handleNextPage = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" className='app-bar'>
@@ -195,6 +207,15 @@ export default function SearchAppBar({setSelectedMonth, setSelectedYear }) {
           </Search>
           <SearchYear setSelectedYear={setSelectedYear}/>
           <SearchMonth setSelectedMonth={setSelectedMonth}/>
+            {/* Botones de navegación de página */}
+            <div style={{ textAlign: 'center', marginTop: '10px' }}>
+            <button disabled={page === 0} onClick={handlePrevPage}>
+              &lt; Anterior
+            </button>
+            <button disabled={page === 7 - 1} onClick={handleNextPage}>
+              Siguiente &gt;
+            </button>
+          </div>
           <Button className='btn-validacion'>Validacion de turno</Button>
         </Toolbar>
       </AppBar>

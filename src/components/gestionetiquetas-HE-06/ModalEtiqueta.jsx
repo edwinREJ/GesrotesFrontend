@@ -11,7 +11,7 @@ function ModalEtiqueta(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
         style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-        border: "1px solid black",backgroundColor: "#f2f2f2" }}
+        border: "1px solid black",backgroundColor: "#f2f2f2",zIndex: '2', }}
       >
         <Modal.Header className='header-estado'>
           <div className="header-content">

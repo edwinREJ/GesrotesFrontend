@@ -35,10 +35,12 @@
     border: 1px solid #092167 !important;
     width: 6.5vw;
     cursor: pointer;
+    height: 13vh;
   }
 
   .card-turno-boton{
-    margin-top: 2vh;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
     background-color: transparent;
     border: none;
   }
@@ -52,3 +54,4 @@
     background-color: lightgray;
   }
   
+ 
