@@ -169,15 +169,7 @@ const Months = [
 export default function SearchAppBar({setSelectedMonth, setSelectedYear }) {
   const [modalShowGEstudiantes, setModalShowGEstudiantes] = useState(false);
   const [modalShowGEtiquetas, setModalShowGEtiquetas] = useState(false);
-  const [page, setPage] = useState(0); // Estado para controlar la página actual
-
-  const handlePrevPage = () => {
-    setPage((prevPage) => prevPage - 1);
-  };
-
-  const handleNextPage = () => {
-    setPage((prevPage) => prevPage + 1);
-  };
+ 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" className='app-bar'>
@@ -207,15 +199,7 @@ export default function SearchAppBar({setSelectedMonth, setSelectedYear }) {
           </Search>
           <SearchYear setSelectedYear={setSelectedYear}/>
           <SearchMonth setSelectedMonth={setSelectedMonth}/>
-            {/* Botones de navegación de página */}
-            <div style={{ textAlign: 'center', marginTop: '10px' }}>
-            <button disabled={page === 0} onClick={handlePrevPage}>
-              &lt; Anterior
-            </button>
-            <button disabled={page === 7 - 1} onClick={handleNextPage}>
-              Siguiente &gt;
-            </button>
-          </div>
+            
           <Button className='btn-validacion'>Validacion de turno</Button>
         </Toolbar>
       </AppBar>

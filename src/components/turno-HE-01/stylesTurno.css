@@ -54,4 +54,21 @@
     background-color: lightgray;
   }
   
- 
+  .card-estudiante-turno{
+    grid: flex;
+    width: 7vw;
+    height: 18vh;
+    border-bottom: 1px solid #000;
+  }
+ .foto-perfil-estudiante{
+    width: 3vw;
+    height: 6vh;
+    border-radius: 50%;
+    border: 1px solid #707070;
+    margin-top: 1vh;
+ }
+
+ .nombre-estudiante-turno p{
+    font-size: 10px;
+    margin-top: 0vh;
+ }
