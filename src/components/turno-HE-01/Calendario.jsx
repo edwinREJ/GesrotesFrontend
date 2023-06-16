@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import dayjs from 'dayjs';
 import 'dayjs/locale/es';
 import CardTurno from './CardTurno';
+import CardEstudianteTurno from './CardEstudiante';
 
 dayjs.locale('es');
 
@@ -72,11 +73,27 @@ function createData(estudiantes, selectedYear, selectedMonth) {
   return rows;
 }
 
-export default function StickyHeadTable({ selectedYear, selectedMonth }) {
-  const estudiantes = React.useMemo(
-    () => ['Estudiante 1', 'Estudiante 2', 'Estudiante 3', 'Estudiante 4', 'Estudiante 5'],
-    []
-  );
+export default function Calendario({ selectedYear, selectedMonth, asignatura_id }) {
+
+  useEffect(() => {
+    setPage(0); // Reiniciar la página a cero cuando cambia el mes
+  }, [selectedMonth, selectedYear]);
+
+  const [estudiantes, setEstudiantes] = useState([]);
+  const [estudiantesId, setEstudiantesId] = useState([]);
+  
+  const estudiantesMemo = React.useMemo(() => {
+    return (
+      estudiantes.map(estudiante => 
+        (
+          <CardEstudianteTurno
+          key={estudiante.estudiante_id}
+          nombre={estudiante.nombre}
+          foto={estudiante.foto}
+          />
+        ))
+    );
+  }, [estudiantes]);
 
   const columns = React.useMemo(() => createColumns(selectedYear, selectedMonth), [
     selectedYear,
@@ -84,8 +101,8 @@ export default function StickyHeadTable({ selectedYear, selectedMonth }) {
   ]);
 
   const rows = React.useMemo(() => {
-    return createData(estudiantes, selectedYear, selectedMonth);
-  }, [selectedYear, selectedMonth, estudiantes]);
+    return createData(estudiantesMemo, selectedYear, selectedMonth);
+  }, [selectedYear, selectedMonth, estudiantesMemo]);
 
   const itemsPerPage = 7;
   const numPages = Math.ceil(columns.length / itemsPerPage);
@@ -112,6 +129,58 @@ export default function StickyHeadTable({ selectedYear, selectedMonth }) {
     setHighlightedColumns([]);
   };
 
+
+    /* Se utiliza el microservicio donde se le envia como parametro un codigo de 
+      la asignatura y nos retorna una lista de ids de estudiantes que estan
+      registrados a dicha asignatura */
+  useEffect(() => {
+    const obtenerEstudiantesId = async () => {
+      try {
+        const response = await fetch(`http://localhost:2008/ListarEstudiantes/${asignatura_id}`,{
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        const data = await response.json();
+        setEstudiantesId(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    obtenerEstudiantesId();
+  }, [asignatura_id]); 
+
+  
+  /* Utilizo el microservicio donde se le envia como parametro una lista de ids de estudiantes 
+      previamente obtenida y nos retorna los datos de los estudiantes los cuales estan registrados
+      a dicha asignatura.*/
+      useEffect(() => {
+        const obtenerEstudiantes = async () => {
+          try {
+            const url = new URL('http://localhost:2101/estudiantesglobalesid');
+            const params = new URLSearchParams();
+            params.append('estudiantesId', estudiantesId.join(',')); // Convierte la lista en una cadena separada por comas
+            url.search = params.toString();
+    
+            const response = await fetch(url, {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+            const data = await response.json();
+            setEstudiantes(data);
+           
+          } catch (error) {
+            console.log(error);
+          }
+        };
+    
+        obtenerEstudiantes();
+      }, [estudiantesId]);
+
+      
   return (
     <Paper sx={{ width: 'auto', backgroundColor: 'transparent' }}>
       <TableContainer sx={{ maxHeight: 'calc(100vh - 300px)', overflowX: 'hidden' }}>
@@ -120,28 +189,27 @@ export default function StickyHeadTable({ selectedYear, selectedMonth }) {
             <TableRow sx={{ height: '3px' }}>
               <TableCell
                 style={{
-                  minWidth: 100,
-                  position: 'sticky',
+                  minWidth: '2vw',
                   left: 0,
                   zIndex: 1,
-                  padding: '2vh',
                   backgroundColor: '#F7F7F7',
+                  paddingBottom:0,
+                  marginBottom: '10px',
                 }}
               >
-                <div>
-                  <div style={{ marginBottom: '8px', marginLeft: '4vw' }}>
+                <div style={{borderBottom: '1px solid #000',width:'7vw'}}>
+                  <div style={{ marginBottom: '1vh', marginLeft: '4vw',marginTop:'0vh' }}>
                     <span>Fecha</span>
                   </div>
                   <hr
                     style={{
-                      border: 'none',
-                      borderTop: '1px solid #000',
+                      borderBottom: '1px solid #000',
                       transform: 'rotate(35deg)',
                       width: '100%',
                       margin: 'auto',
                     }}
                   />
-                  <div style={{ marginTop: '8px', marginRight: '45px' }}>
+                  <div style={{ marginTop:'3vh', marginRight: '45px',marginBottom: '1vh'}}>
                     <span>Estudiante</span>
                   </div>
                 </div>
@@ -156,10 +224,11 @@ export default function StickyHeadTable({ selectedYear, selectedMonth }) {
                       minWidth: column.minWidth,
                       textAlign: 'center',
                       position: 'sticky',
-                      padding: '2vh',
                       backgroundColor: highlightedColumns.includes(startIndex + columnIndex)
                         ? '#E3F2FD'
                         : '#F7F7F7',
+                      borderRight: '1px solid #000', // Agrega el borde derecho aquí
+                   
                     }}
                     onMouseEnter={() => handleColumnMouseEnter(startIndex + columnIndex)}
                     onMouseLeave={handleColumnMouseLeave}
@@ -171,19 +240,19 @@ export default function StickyHeadTable({ selectedYear, selectedMonth }) {
           </TableHead>
           <TableBody>
             {rows.map((row, index) => (
-              <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                <TableCell style={{ textAlign: 'center', width: '1vw' }}>{row.name}</TableCell>
+              <TableRow hover role="checkbox" tabIndex={-1} key={index}  >
+                <TableCell style={{ textAlign: 'center', width: '1vw',paddingBottom:0,
+                paddingTop:0}}>{row.name}</TableCell>
                 {row.cards.slice(startIndex, endIndex).map((card, cardIndex) => {
                   const columnIndex = startIndex + cardIndex;
                   const isEmpty = columns[columnIndex].empty;
 
                   return (
-                    <TableCell
+                    <TableCell 
                       key={cardIndex}
                       style={{
                         textAlign: 'center',
                         width: '0vw',
-                        
                       }}
                     >
                       {isEmpty ? null : card}
