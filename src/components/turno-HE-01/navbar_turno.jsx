@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,8 +12,6 @@ import Stack from '@mui/material/Stack';
 import ModalEtiqueta from "../gestionetiquetas-HE-06/ModalEtiqueta";
 import './stylesTurno.css'
 import GestionEstudiante from '../gestionestudiante-HE-02/GestionEstudiante';
-
-
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -44,7 +42,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 
 /*Estilos del input*/
 const StyledSearchEstudentBar = styled(InputBase)(({ theme }) => ({
-  marginRight: '3vw',
+  marginRight: '2vw',
   color: 'inherit', 
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
@@ -107,7 +105,7 @@ const Years = [
   { label: 2029}
 ]
 
-function SearchMonth({ setSelectedMonth }) {
+function SearchMonth({ setSelectedMonth, setPage }) {
   const handleMonthChange = (event, newValue) => {
     
     if(newValue !== null){
@@ -129,6 +127,7 @@ function SearchMonth({ setSelectedMonth }) {
       
     const selectedMonthNumber = monthMap[newValue.label];
       setSelectedMonth(selectedMonthNumber);
+      setPage(0);
     };
     }
 
@@ -166,9 +165,18 @@ const Months = [
 ];
 
 
-export default function SearchAppBar({setSelectedMonth, setSelectedYear }) {
+export default function SearchAppBar({setSelectedMonth, setSelectedYear,page,numPages,setPage}) {
   const [modalShowGEstudiantes, setModalShowGEstudiantes] = useState(false);
   const [modalShowGEtiquetas, setModalShowGEtiquetas] = useState(false);
+
+
+  const handleNextPage = () => {
+    setPage((prevPage) => (prevPage + 1) % numPages);
+  };
+
+  const handlePrevPage = () => {
+    setPage((prevPage) => (prevPage - 1 + numPages) % numPages);
+  };
  
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -198,8 +206,21 @@ export default function SearchAppBar({setSelectedMonth, setSelectedYear }) {
             />
           </Search>
           <SearchYear setSelectedYear={setSelectedYear}/>
-          <SearchMonth setSelectedMonth={setSelectedMonth}/>
-            
+          <SearchMonth setSelectedMonth={setSelectedMonth} setPage={setPage}/>
+          <button
+            className={`btn-pagina-turno${page === 0 ? ' disabled' : ''}`}
+            disabled={page === 0}
+            onClick={handlePrevPage}
+          >
+            &lt;
+          </button>
+          <button
+            className={`btn-pagina-turno${page === numPages - 1 ? ' disabled' : ''}`}
+            disabled={page === numPages - 1}
+            onClick={handleNextPage}
+          >
+            &gt;
+          </button>
           <Button className='btn-validacion'>Validacion de turno</Button>
         </Toolbar>
       </AppBar>

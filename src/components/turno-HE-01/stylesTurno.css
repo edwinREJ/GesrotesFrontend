@@ -29,6 +29,7 @@
     width: 7vw !important;
     height: 6vh !important;
     font-size: 10px !important;
+    margin-left: 1vw !important;
   }
   
   .card-turno{
@@ -72,3 +73,15 @@
     font-size: 10px;
     margin-top: 0vh;
  }
+
+ .btn-pagina-turno {
+  color: #092167 !important;
+  font-size: 20px;
+  margin-right: 1vw;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.btn-pagina-turno.disabled {
+  opacity: 0.5;
+}

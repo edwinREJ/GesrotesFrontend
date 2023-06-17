@@ -73,11 +73,7 @@ function createData(estudiantes, selectedYear, selectedMonth) {
   return rows;
 }
 
-export default function Calendario({ selectedYear, selectedMonth, asignatura_id }) {
-
-  useEffect(() => {
-    setPage(0); // Reiniciar la página a cero cuando cambia el mes
-  }, [selectedMonth, selectedYear]);
+export default function Calendario({selectedYear, selectedMonth, asignatura_id,setNumPages,setPage,page }){
 
   const [estudiantes, setEstudiantes] = useState([]);
   const [estudiantesId, setEstudiantesId] = useState([]);
@@ -106,15 +102,8 @@ export default function Calendario({ selectedYear, selectedMonth, asignatura_id 
 
   const itemsPerPage = 7;
   const numPages = Math.ceil(columns.length / itemsPerPage);
-  const [page, setPage] = React.useState(0);
-
-  const handleNextPage = () => {
-    setPage((prevPage) => (prevPage + 1) % numPages);
-  };
-
-  const handlePrevPage = () => {
-    setPage((prevPage) => (prevPage - 1 + numPages) % numPages);
-  };
+  
+  setNumPages(numPages);
 
   const startIndex = page * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -195,6 +184,7 @@ export default function Calendario({ selectedYear, selectedMonth, asignatura_id 
                   backgroundColor: '#F7F7F7',
                   paddingBottom:0,
                   marginBottom: '10px',
+                  borderRight: '1px solid #000', //aqui se puede cambiar el color de fondo de la linea derecha
                 }}
               >
                 <div style={{borderBottom: '1px solid #000',width:'7vw'}}>
@@ -217,24 +207,27 @@ export default function Calendario({ selectedYear, selectedMonth, asignatura_id 
               {columns
                 .slice(startIndex, endIndex)
                 .map((column, columnIndex) => (
-                  <TableCell
-                    key={column.id}
-                    align={column.align}
-                    style={{
-                      minWidth: column.minWidth,
-                      textAlign: 'center',
-                      position: 'sticky',
-                      backgroundColor: highlightedColumns.includes(startIndex + columnIndex)
-                        ? '#E3F2FD'
-                        : '#F7F7F7',
-                      borderRight: '1px solid #000', // Agrega el borde derecho aquí
-                   
-                    }}
-                    onMouseEnter={() => handleColumnMouseEnter(startIndex + columnIndex)}
-                    onMouseLeave={handleColumnMouseLeave}
-                  >
-                    {column.label}
-                  </TableCell>
+                      <TableCell
+                        key={column.id}
+                        align={column.align}
+                        style={{
+                          minWidth: column.minWidth,
+                          textAlign: 'center',
+                          position: 'sticky',
+                          backgroundColor: highlightedColumns.includes(startIndex + columnIndex)
+                            ? '#E3F2FD'
+                            : '#F7F7F7',
+                          // Agrega el borde derecho aquí
+                          borderRight: '1px solid #000', //aqui se puede cambiar el color de fondo de la linea derecha
+                          marginTop:'10vh',
+                        }}
+                        onMouseEnter={() => handleColumnMouseEnter(startIndex + columnIndex)}
+                        onMouseLeave={handleColumnMouseLeave}
+                        className="custom-header" 
+                      >
+                        {column.label}
+                      
+                      </TableCell>
                 ))}
             </TableRow>
           </TableHead>
@@ -264,14 +257,7 @@ export default function Calendario({ selectedYear, selectedMonth, asignatura_id 
           </TableBody>
         </Table>
       </TableContainer>
-      <div style={{ textAlign: 'center', marginTop: '10px' }}>
-        <button disabled={page === 0} onClick={handlePrevPage}>
-          &lt; Anterior
-        </button>
-        <button disabled={page === numPages - 1} onClick={handleNextPage}>
-          Siguiente &gt;
-        </button>
-      </div>
+      
     </Paper>
   );
 }
