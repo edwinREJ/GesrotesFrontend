@@ -165,7 +165,7 @@ const Months = [
 ];
 
 
-export default function SearchAppBar({setSelectedMonth, setSelectedYear,page,numPages,setPage}) {
+export default function SearchAppBar({setSelectedMonth, setSelectedYear,page,numPages,setPage,setFilter}) {
   const [modalShowGEstudiantes, setModalShowGEstudiantes] = useState(false);
   const [modalShowGEtiquetas, setModalShowGEtiquetas] = useState(false);
 
@@ -177,6 +177,10 @@ export default function SearchAppBar({setSelectedMonth, setSelectedYear,page,num
   const handlePrevPage = () => {
     setPage((prevPage) => (prevPage - 1 + numPages) % numPages);
   };
+
+  const handleInput = ({ target }) => {
+		setFilter(target.value)
+	}
  
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -203,6 +207,7 @@ export default function SearchAppBar({setSelectedMonth, setSelectedYear,page,num
             <StyledSearchEstudentBar
               placeholder="Buscar estudiante "
               inputProps={{ 'aria-label': 'search' }}
+              onChange={handleInput}
             />
           </Search>
           <SearchYear setSelectedYear={setSelectedYear}/>

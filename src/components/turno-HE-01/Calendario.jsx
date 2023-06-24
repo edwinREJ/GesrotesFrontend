@@ -73,14 +73,16 @@ function createData(estudiantes, selectedYear, selectedMonth) {
   return rows;
 }
 
-export default function Calendario({selectedYear, selectedMonth, asignatura_id,setNumPages,setPage,page }){
+export default function Calendario({selectedYear, selectedMonth, asignatura_id,setNumPages,setPage,page,filter}){
 
   const [estudiantes, setEstudiantes] = useState([]);
   const [estudiantesId, setEstudiantesId] = useState([]);
-  
+  const estudiantesFiltrados = estudiantes.filter((estudiante) =>
+  estudiante.nombre && estudiante.nombre.toLowerCase().includes(filter.toLowerCase()));
+
   const estudiantesMemo = React.useMemo(() => {
     return (
-      estudiantes.map(estudiante => 
+      estudiantesFiltrados.map(estudiante => 
         (
           <CardEstudianteTurno
           key={estudiante.estudiante_id}
@@ -89,7 +91,7 @@ export default function Calendario({selectedYear, selectedMonth, asignatura_id,s
           />
         ))
     );
-  }, [estudiantes]);
+  }, [estudiantesFiltrados]);
 
   const columns = React.useMemo(() => createColumns(selectedYear, selectedMonth), [
     selectedYear,
@@ -140,7 +142,8 @@ export default function Calendario({selectedYear, selectedMonth, asignatura_id,s
     obtenerEstudiantesId();
   }, [asignatura_id]); 
 
-  
+ 
+
   /* Utilizo el microservicio donde se le envia como parametro una lista de ids de estudiantes 
       previamente obtenida y nos retorna los datos de los estudiantes los cuales estan registrados
       a dicha asignatura.*/
