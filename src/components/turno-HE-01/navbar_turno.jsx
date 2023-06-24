@@ -70,7 +70,6 @@ const StyledStack = styled(Stack)(({ theme }) => ({
 
 function SearchYear({ setSelectedYear }) {
 
- 
   const handleYearChange = (event, newValue) => {
     if(newValue!==null)
     setSelectedYear(newValue.label.toString()); // Actualiza el año seleccionado utilizando la función pasada como parámetro
@@ -85,6 +84,7 @@ function SearchYear({ setSelectedYear }) {
   return (
     <StyledStack spacing={1}>
       <Autocomplete
+        defaultValue={Years[0]}
         onChange={handleYearChange}
         {...defaultProps}
         renderInput={(params) => (
@@ -139,6 +139,7 @@ function SearchMonth({ setSelectedMonth, setPage }) {
   return (
     <StyledStack spacing={1}>
       <Autocomplete
+        defaultValue={Months[0]}
         onChange={handleMonthChange}
         {...defaultProps}
         renderInput={(params) => (
@@ -182,6 +183,7 @@ export default function SearchAppBar({setSelectedMonth, setSelectedYear,page,num
 		setFilter(target.value)
 	}
  
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" className='app-bar'>

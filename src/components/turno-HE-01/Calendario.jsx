@@ -77,6 +77,8 @@ export default function Calendario({selectedYear, selectedMonth, asignatura_id,s
 
   const [estudiantes, setEstudiantes] = useState([]);
   const [estudiantesId, setEstudiantesId] = useState([]);
+
+  /*Filtro el estudiante que se desee buscar en el input*/
   const estudiantesFiltrados = estudiantes.filter((estudiante) =>
   estudiante.nombre && estudiante.nombre.toLowerCase().includes(filter.toLowerCase()));
 
